@@ -141,7 +141,8 @@ public class ScoreboardImpl implements Scoreboard
 	 * INPUT: An integer score
 	 * OUTPUT: Boolean result of validity test
 	 */
-	private boolean isValid(int score)
+	//TODO Make this private before release
+	public boolean isValid(int score)
 	{
 		if(score%10 == 0 //Checks that score is a multiple of 10
 		&& score>=0  //Checks that score is non-negative
