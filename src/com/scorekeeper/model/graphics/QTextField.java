@@ -118,11 +118,12 @@ public class QTextField extends JTextField
 		int type = this.type;
 		switch(type)
 		{
-			case 1: //Timekeeper Display
-				Font timebox = new Font("MarkerFelt-Wide", Font.PLAIN, 96); //Create font
-				this.setEditable(false); //You cannot type in timeboxes
-				this.setHorizontalAlignment(JTextField.CENTER); //Timebox text should be centered
-				this.setFont(timebox); //Timeboxes should have the font created above
+			case 1: //Timekeeper Display Parts
+				Font fieldFont = new Font("MarkerFelt-Wide", Font.PLAIN, 126);
+				this.setFont(fieldFont);
+		        this.setEditable(false);
+		        this.setHorizontalAlignment(QTextField.CENTER);
+		        this.setBorder(null);
 	            break; 
 	        case 2: //Score Display
 	        	Font scorebox = new Font("MarkerFelt-Wide", Font.PLAIN, 256); //Create a font

@@ -18,13 +18,13 @@ public class GraphicsImpl implements Graphics
 		JFrame frame= new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
 		frame.setSize(1450, 800); //Set window size
 		final Scoreboard sb = new ScoreboardImpl(); //Creates a scoreboard object for use
-		final Timer t = new TimerImpl(); //Creates a timer object for use
+		final TimerImpl t = new TimerImpl(); //Creates a timer object for use
 		
 		/*
 		 * Begin creation of buttons & windows
 		 */
 		//Create timebox
-		final QTextField timebox = new QTextField("00:00:00", 1, 425, 25, 600, 150);
+		//final QTextField timebox = new QTextField("00:00:00", 1, 425, 25, 600, 150);
 		
 		//Create scoreboxes
 		final QTextField scorebox1=new QTextField("0", 2, 25, 200, 675, 400); //Set default value & position
@@ -80,7 +80,14 @@ public class GraphicsImpl implements Graphics
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {  
-	        	t.stopTime();
+	        	if(t.isRunning())
+	        	{
+	        		t.stopTime();
+	        	}
+	        	else
+	        	{
+	        		t.resetTime();
+	        	}
 	        }  
 	    }); 
 	    setTime.addActionListener(new ActionListener() //Dictates what happens when setTime button is clicked
@@ -152,7 +159,8 @@ public class GraphicsImpl implements Graphics
 	    /*
 		 * Begin adding items to window
 		 */
-		frame.add(timebox); //Add timer to window
+		//frame.add(timebox); //Add timer to window
+	    frame.add(t);
 		
 		frame.add(startTime); //Add timer controls to window
 	    frame.add(stopReset); 
