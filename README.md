@@ -64,3 +64,14 @@ The following is the most-current mockup(s) of the application interface(s):
 **Yuyang & Anjali** - Implement timer and basic methods, text-based if necessary.
 
 **Cong** - Implement score counters and basic methods, text based if necessary.
+
+---
+# Sprint 2
+## Project Roles
+**Jess** - Update Graphics to be more similar to mockups
+
+**Yuyang** - Implement Graphics test suite
+
+**Anjali** - Implement Timer test suite
+
+**Cong** - Assist Yuyang & Cong with test development
