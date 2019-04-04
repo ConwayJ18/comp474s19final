@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class TimerImpl extends JFrame {
+public class TimerImpl extends JFrame implements Timer {
 	
 	private JPanel mainPanel, timerPanel;			// Panels to hold components
 	private JLabel colonLabel1, colonLabel2;		// Labels to display : in HH:MM:SS
@@ -355,5 +355,35 @@ public class TimerImpl extends JFrame {
 		minutesField.setText("00");
 		secondsField.setText("00");
 		millisecondsCount = 0;
+	}
+
+	@Override
+	public void startTime() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stopTime() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTime(String time) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTime(int hours, int minutes, int seconds) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int[] getTime() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
