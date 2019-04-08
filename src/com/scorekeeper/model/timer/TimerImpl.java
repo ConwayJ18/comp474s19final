@@ -52,20 +52,6 @@ public class TimerImpl extends JPanel implements Timer {
         // Initialize hours field
         hoursField = new QTextField("00", 1);
         format(hoursField);
-        hoursField.addKeyListener(new KeyListener() {	// Add Key listener to listen keyboard input
-
-			@Override
-			public void keyTyped(KeyEvent e) {		// It is invoked when a key is typed
-				validateInput(hoursField, e);
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {}	// Implement Method from interface
-
-			@Override
-			public void keyReleased(KeyEvent e) {}	// Implement Method from interface
-
-		});
         add(hoursField);		// Add hours field to timer panel
 
         // Initialize colon
@@ -76,21 +62,6 @@ public class TimerImpl extends JPanel implements Timer {
         // Initialize minutes field
         minutesField = new QTextField("00", 1);
         format(minutesField);
-        minutesField.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				validateInput(minutesField, e);
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {}
-
-			@Override
-			public void keyReleased(KeyEvent e) {}
-
-		});
-
         add(minutesField);
 
         // Initialize colon
@@ -101,20 +72,6 @@ public class TimerImpl extends JPanel implements Timer {
         // Initialize seconds field
         secondsField = new QTextField("00", 1);
         format(secondsField);
-        secondsField.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				validateInput(secondsField, e);
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {}
-
-			@Override
-			public void keyReleased(KeyEvent e) {}
-
-		});
         add(secondsField);
 
 	}
@@ -205,35 +162,6 @@ public class TimerImpl extends JPanel implements Timer {
 		secondsField.setText(secondsString);
 	}
 
-	// Validate the input given in TextField
-	public void validateInput(QTextField field, KeyEvent e) {
-
-		boolean isValueChanged = true;		// Considering it validated at first
-
-		char c = e.getKeyChar();			// Get the keyboard character input
-
-		String fieldText = field.getText();	// Get the data in textfield
-
-        if(fieldText.length() >= 2 || !Character.isDigit(c)			// If number of characters > 2, non-digit characters are entered and the input character is not Backspace or Delete Key
-                && !(c == KeyEvent.VK_DELETE || c == KeyEvent.VK_BACK_SPACE)) {
-            getToolkit().beep();										// Then, input isn't valid. So make a beep sound
-            e.consume();												// Consume the keypress event and it won't be processed further
-            isValueChanged = false;										// Changing variable to flag invalid input
-        }
-
-        if(!fieldText.equals("")) {				// If textfield is not blank
-        	int number = Integer.parseInt(fieldText);	// Parse string input to int
-
-            if(!(field == hoursField) && number > 59) { // If the field isn't hours field and number entered is greater than 59
-            	updateTime();								// Update time to change the fields accordingly
-            }
-        }
-
-        if(!isValueChanged) {			// If Invalid input, then alert user
-        	JOptionPane.showMessageDialog(null, "Please enter a valid value for time.");
-        }
-	}
-
 	// Validate the input given in int[] parts, where parts[0] is hours, [1] is minutes, [2] is seconds
 	public void validateInput(int[] parts)
 	{
@@ -289,6 +217,7 @@ public class TimerImpl extends JPanel implements Timer {
         }
         else //Else alert the user
         {
+        	getToolkit().beep();
         	JOptionPane.showMessageDialog(null, "Please enter a valid value for time.");
         }
 	}
