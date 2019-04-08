@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 
 import com.scorekeeper.model.scoreboard.Scoreboard;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
-import com.scorekeeper.model.timer.Timer;
 import com.scorekeeper.model.timer.TimerImpl;
 
 public class GraphicsImpl implements Graphics
