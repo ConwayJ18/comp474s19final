@@ -1,5 +1,7 @@
 package com.scorekeeper.model.scoreboard;
 
+import javax.swing.JOptionPane;
+
 public class ScoreboardImpl implements Scoreboard
 {
 	int score1;
@@ -150,7 +152,10 @@ public class ScoreboardImpl implements Scoreboard
 		{
 			return true; //Return true if all conditions are met
 		}
-
-		return false; //Otherwise return false
+		else //Otherwise input is invalid
+		{
+			JOptionPane.showMessageDialog(null, "Please enter a valid value for score."); //Alert
+			return false;
+		}
 	}
 }
