@@ -1,9 +1,9 @@
 package com.scorekeeper.model.graphics;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import com.scorekeeper.model.scoreboard.Scoreboard;
@@ -17,50 +17,39 @@ public class GraphicsImpl implements Graphics
 	{
 		JFrame frame= new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
 		frame.setSize(1450, 800); //Set window size
+		frame.getContentPane().setBackground(new Color(153,153,153)); //Dark gray
 		final Scoreboard sb = new ScoreboardImpl(); //Creates a scoreboard object for use
 		final TimerImpl t = new TimerImpl(); //Creates a timer object for use
+		t.setBackground(new Color(243,243,243)); //Light gray
 		
 		/*
 		 * Begin creation of buttons & windows
 		 */
-		//Create timebox
-		//final QTextField timebox = new QTextField("00:00:00", 1, 425, 25, 600, 150);
-		
 		//Create scoreboxes
 		final QTextField scorebox1=new QTextField("0", 2, 25, 200, 675, 400); //Set default value & position
 	    final QTextField scorebox2=new QTextField("0", 2, 750, 200, 675, 400); //Set default value & position
 		
 	    //Create time controls
-	    JButton startTime=new JButton("Start"); //This is the start button
-	    startTime.setBounds(25,25,150,150); //Set startTime's location
-	    JButton stopReset=new JButton("Stop/Reset"); //This is the stop/reset button
-	    stopReset.setBounds(185,25,150,150); //Set stop/reset's location
+	    QButton startTime=new QButton("Start", 1, 25, 25, 150, 150); //This is the start button
+	    QButton stopReset=new QButton("Stop/Reset", 3, 185, 25, 150, 150); //This is the stop/reset button
 	    QTextField inputTime = new QTextField("00:00:00", 3, frame.getWidth()-350, 25, 325, 70); //Add textbox for setTime to use
-	    JButton setTime=new JButton("Set Time"); //This is the setTime button 
-	    setTime.setBounds(frame.getWidth()-350,105,325,70); //Set setTime's location
+	    QButton setTime=new QButton("Set Time", 4, frame.getWidth()-350, 105, 325, 70); //This is the setTime button
 
 	    //Create score1 controls
-	    JButton incrementScore1=new JButton("+10"); //This button increments score1
-	    incrementScore1.setBounds(25,610,100,100); //Set incrementScore1's location
-	    JButton decrementScore1=new JButton("-10"); //This button decrements score1
-	    decrementScore1.setBounds(130,610,100,100); //Set decrementScore1's location
+	    QButton incrementScore1=new QButton("+10", 1, 25, 610, 100, 100); //This button increments score1
+	    QButton decrementScore1=new QButton("-10", 3, 130, 610, 100, 100); //This button decrements score1
 	    QTextField inputScore1 = new QTextField("000", 4, 240, 610, 210, 100); //Add textbox for setScore1 to use
-	    JButton setScore1=new JButton("Set Score"); //This button sets score1
-	    setScore1.setBounds(490,610,210,100); //Set setScore1's location
+	    QButton setScore1=new QButton("Set Score", 4, 490, 610, 210, 100); //This button sets score1
 	    
 	    //Create score2 controls
-	    JButton incrementScore2=new JButton("+10"); //This button increments score2
-	    incrementScore2.setBounds(750,610,100,100); //Set incrementScore2's location
-	    JButton decrementScore2=new JButton("-10"); //This button decrements score2
-	    decrementScore2.setBounds(860,610,100,100); //Set decrementScore2's location
+	    QButton incrementScore2=new QButton("+10", 1, 750, 610, 100, 100); //This button increments score2
+	    QButton decrementScore2=new QButton("-10", 3, 860, 610, 100, 100); //This button decrements score2
 	    QTextField inputScore2 = new QTextField("000", 4, 970, 610, 210, 100); //Add textbox for setScore2 to use
-	    JButton setScore2=new JButton("Set Score"); //This button sets score2
-	    setScore2.setBounds(1210,610,210,100); //Set setScore2's location
+	    QButton setScore2=new QButton("Set Score", 4, 1210, 610, 210, 100); //This button sets score2
 	    
 	    //Create notification box & acknowledgement button
 	    QTextField notifications = new QTextField("", 5, 25, frame.getHeight()-80, 1000, 50); //Add textbox for setScore2 to use
-	    JButton acknowledge=new JButton("Clear Notification"); //This button sets score2
-	    acknowledge.setBounds(1035, frame.getHeight()-80, 390, 50); //Set setScore2's location
+	    QButton acknowledge=new QButton("Clear Notification", 1, 1035, frame.getHeight()-80, 390, 50); //This button sets score2
 	    /*
 		 * End creation of buttons & windows
 		 */
@@ -74,6 +63,7 @@ public class GraphicsImpl implements Graphics
 	        public void actionPerformed(ActionEvent e)
 	        {  
 	        	t.startTime();
+	        	stopReset.setBackground(new Color(254,242,204)); //Yellow
 	        }  
 	    }); 
 	    stopReset.addActionListener(new ActionListener() //Dictates what happens when stopReset button is clicked
@@ -83,6 +73,7 @@ public class GraphicsImpl implements Graphics
 	        	if(t.isRunning())
 	        	{
 	        		t.stopTime();
+	        		stopReset.setBackground(new Color(244,204,204)); //Red
 	        	}
 	        	else
 	        	{
