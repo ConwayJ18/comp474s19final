@@ -1,9 +1,6 @@
 package com.scorekeeper.model.timer;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,6 +13,7 @@ public class TimerImpl extends JPanel implements Timer {
 	private int millisecondsCount;					// Keeps a count of milliseconds passed to provide higher level of accuracy when pausing and unpausing in fractions of seconds
 	private int hours, seconds, minutes;			// Holds int values
 	private boolean isTimerOn, isPaused;			// If timer is started, If timer is currently paused or not
+	private String alertMessage;					// Holds current alert message
 	private Thread timerThread;						// Thread responsible for the timer's functionality
 
 	// TimerImpl Constructor
@@ -46,8 +44,7 @@ public class TimerImpl extends JPanel implements Timer {
 
 	// Initialize the frame components
 	public void initComponents() {
-		setBounds(425, 25, 600, 150);
-		setBackground(Color.WHITE);
+		this.setBounds(425, 25, 600, 150);
 
         // Initialize hours field
         hoursField = new QTextField("00", 1);
@@ -73,7 +70,8 @@ public class TimerImpl extends JPanel implements Timer {
         secondsField = new QTextField("00", 1);
         format(secondsField);
         add(secondsField);
-
+        
+        
 	}
 
 	// Update the frame and data, which is held in this frame
@@ -142,6 +140,11 @@ public class TimerImpl extends JPanel implements Timer {
 		updateHours();
 		updateMinutes();
 		updateSeconds();
+		
+		if(alertNecessary())
+		{
+			alert();
+		}
 	}
 
 	// Update Hours TextField
@@ -290,5 +293,39 @@ public class TimerImpl extends JPanel implements Timer {
         field.setEditable(false);
         field.setHorizontalAlignment(QTextField.CENTER);
         field.setBorder(null);
+	}
+	
+	private boolean alertNecessary()
+	{
+		if(hours==0 && seconds==0)
+		{
+			if(minutes == 16 || minutes == 17 || minutes == 18)
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private void alert() 
+	{
+		if(minutes == 16)
+		{
+			alertMessage = "Snitch Report!";
+		}
+		else if(minutes == 17)
+		{
+			alertMessage = "Snitch Released! Seekers Report!";
+		}
+		else if(minutes == 18)
+		{
+			alertMessage = "Seekers Released!";
+		}
+	}
+	
+	public void acknowledge()
+	{
+		alertMessage = "";
 	}
 }
