@@ -12,6 +12,12 @@ import com.scorekeeper.model.timer.TimerImpl;
 
 public class GraphicsImpl implements Graphics
 {
+	QTextField scorebox1, scorebox2, inputTime, inputScore1, inputScore2, notifications; //Text Fields
+	QButton startTime, stopReset;	//Timer controls
+	QButton incrementScore1, incrementScore2, decrementScore1, decrementScore2; //Score controls
+	QButton setTime, setScore1, setScore2; //Setter buttons
+	QButton acknowledge; //Acknowledges notifications
+	
 	public void start()
 	{
 		JFrame frame= new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
@@ -19,36 +25,37 @@ public class GraphicsImpl implements Graphics
 		frame.getContentPane().setBackground(new Color(153,153,153)); //Dark gray
 		final Scoreboard sb = new ScoreboardImpl(); //Creates a scoreboard object for use
 		final TimerImpl t = new TimerImpl(); //Creates a timer object for use
+		t.addObserver(this);
 		t.setBackground(new Color(243,243,243)); //Light gray
 		
 		/*
 		 * Begin creation of buttons & windows
 		 */
 		//Create scoreboxes
-		final QTextField scorebox1=new QTextField("0", 2, 25, 200, 675, 400); //Set default value & position
-	    final QTextField scorebox2=new QTextField("0", 2, 750, 200, 675, 400); //Set default value & position
+		scorebox1=new QTextField("0", 2, 25, 200, 675, 400); //Set default value & position
+	    scorebox2=new QTextField("0", 2, 750, 200, 675, 400); //Set default value & position
 		
 	    //Create time controls
-	    QButton startTime=new QButton("Start", 1, 25, 25, 150, 150); //This is the start button
-	    QButton stopReset=new QButton("Stop/Reset", 3, 185, 25, 150, 150); //This is the stop/reset button
-	    QTextField inputTime = new QTextField("00:00:00", 3, frame.getWidth()-350, 25, 325, 70); //Add textbox for setTime to use
-	    QButton setTime=new QButton("Set Time", 4, frame.getWidth()-350, 105, 325, 70); //This is the setTime button
+	    startTime=new QButton("Start", 1, 25, 25, 150, 150); //This is the start button
+	    stopReset=new QButton("Stop/Reset", 3, 185, 25, 150, 150); //This is the stop/reset button
+	    inputTime = new QTextField("00:00:00", 3, frame.getWidth()-350, 25, 325, 70); //Add textbox for setTime to use
+	    setTime=new QButton("Set Time", 4, frame.getWidth()-350, 105, 325, 70); //This is the setTime button
 
 	    //Create score1 controls
-	    QButton incrementScore1=new QButton("+10", 1, 25, 610, 100, 100); //This button increments score1
-	    QButton decrementScore1=new QButton("-10", 3, 130, 610, 100, 100); //This button decrements score1
-	    QTextField inputScore1 = new QTextField("000", 4, 240, 610, 210, 100); //Add textbox for setScore1 to use
-	    QButton setScore1=new QButton("Set Score", 4, 490, 610, 210, 100); //This button sets score1
+	    incrementScore1=new QButton("+10", 1, 25, 610, 100, 100); //This button increments score1
+	    decrementScore1=new QButton("-10", 3, 130, 610, 100, 100); //This button decrements score1
+	    inputScore1 = new QTextField("000", 4, 240, 610, 210, 100); //Add textbox for setScore1 to use
+	    setScore1=new QButton("Set Score", 4, 490, 610, 210, 100); //This button sets score1
 	    
 	    //Create score2 controls
-	    QButton incrementScore2=new QButton("+10", 1, 750, 610, 100, 100); //This button increments score2
-	    QButton decrementScore2=new QButton("-10", 3, 860, 610, 100, 100); //This button decrements score2
-	    QTextField inputScore2 = new QTextField("000", 4, 970, 610, 210, 100); //Add textbox for setScore2 to use
-	    QButton setScore2=new QButton("Set Score", 4, 1210, 610, 210, 100); //This button sets score2
+	    incrementScore2=new QButton("+10", 1, 750, 610, 100, 100); //This button increments score2
+	    decrementScore2=new QButton("-10", 3, 860, 610, 100, 100); //This button decrements score2
+	    inputScore2 = new QTextField("000", 4, 970, 610, 210, 100); //Add textbox for setScore2 to use
+	    setScore2=new QButton("Set Score", 4, 1210, 610, 210, 100); //This button sets score2
 	    
 	    //Create notification box & acknowledgement button
-	    QTextField notifications = new QTextField("", 5, 25, frame.getHeight()-80, 1000, 50); //Add textbox for setScore2 to use
-	    QButton acknowledge=new QButton("Clear Notification", 1, 1035, frame.getHeight()-80, 390, 50); //This button sets score2
+	    notifications = new QTextField("", 5, 25, frame.getHeight()-80, 1000, 50); //Add textbox for setScore2 to use
+	    acknowledge=new QButton("Acknowledge", 1, 1035, frame.getHeight()-80, 390, 50); //This button sets score2
 	    /*
 		 * End creation of buttons & windows
 		 */
@@ -134,12 +141,12 @@ public class GraphicsImpl implements Graphics
 	        }  
 	    }); 
 	    
-	    //Control to clear notification
+	    //Control to acknowledge notification
 	    acknowledge.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {
-		        notifications.setText("");
+		        t.acknowledge();
 	        }  
 	    }); 
 	    /*
@@ -184,5 +191,11 @@ public class GraphicsImpl implements Graphics
 		frame.setResizable(false); //Disallows resizing the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Makes program quit when the window closes
 		frame.setVisible(true); //Makes the window visible
+	}
+
+	@Override
+	public void updateNotification(String alertMessage)
+	{
+		notifications.setText(alertMessage);
 	}
 }

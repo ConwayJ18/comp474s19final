@@ -1,10 +1,14 @@
 package com.scorekeeper.model.timer;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.scorekeeper.model.graphics.Graphics;
 import com.scorekeeper.model.graphics.QTextField;
 
 public class TimerImpl extends JPanel implements Timer {
@@ -13,8 +17,9 @@ public class TimerImpl extends JPanel implements Timer {
 	private int millisecondsCount;					// Keeps a count of milliseconds passed to provide higher level of accuracy when pausing and unpausing in fractions of seconds
 	private int hours, seconds, minutes;			// Holds int values
 	private boolean isTimerOn, isPaused;			// If timer is started, If timer is currently paused or not
-	private String alertMessage;					// Holds current alert message
+	private Queue<String> alertMessages = new LinkedList<String>();	// Holds uncleared alert messages
 	private Thread timerThread;						// Thread responsible for the timer's functionality
+	private ArrayList<Graphics> graphicsObservers = new ArrayList<>(); // Needed for notification functionality
 
 	// TimerImpl Constructor
 	public TimerImpl()
@@ -128,6 +133,11 @@ public class TimerImpl extends JPanel implements Timer {
 				if(seconds % 6 == 0) {		// If seconds value is a multiple of 6
 					updateMinutes();			// Update minutes field to get 2-digit value
 					updateHours();				// Update hours field to get 2-digit value
+				}
+				
+				if(alertNecessary())
+				{
+					alert();
 				}
 			}
 
@@ -312,20 +322,35 @@ public class TimerImpl extends JPanel implements Timer {
 	{
 		if(minutes == 16)
 		{
-			alertMessage = "Snitch Report!";
+			alertMessages.add("Snitch Report!");
 		}
 		else if(minutes == 17)
 		{
-			alertMessage = "Snitch Released! Seekers Report!";
+			alertMessages.add("Snitch Released! Seekers Report!");
 		}
 		else if(minutes == 18)
 		{
-			alertMessage = "Seekers Released!";
+			alertMessages.add("Seekers Released!");
 		}
+		notifyObservers();
 	}
 	
-	public void acknowledge()
+	public void acknowledge() //Clears notification panel
 	{
-		alertMessage = "";
+		alertMessages.remove();
+		notifyObservers();
+	}
+	
+	public void addObserver(Graphics g) //Standard for observer patterns
+	{
+		this.graphicsObservers.add(g);
+	}
+	
+	public void notifyObservers() //Standard for observer pattern
+	{
+		for(Graphics g : graphicsObservers)
+		{
+			g.updateNotification(alertMessages.peek());
+		}
 	}
 }
