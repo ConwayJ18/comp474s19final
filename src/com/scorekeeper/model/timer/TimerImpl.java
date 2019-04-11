@@ -28,8 +28,8 @@ public class TimerImpl extends JPanel implements Timer
 	}
 
 	// Initialize Timer Thread
-	public void initializeThread() {
-
+	private void initializeThread()
+	{
 		timerThread = new Thread() {	// Create thread
 
 			@Override
@@ -47,8 +47,9 @@ public class TimerImpl extends JPanel implements Timer
 	}
 
 	// Update the frame and data, which is held in this frame
-	public void updateTime() {
-		if(!isPaused) {		// If unpaused
+	private void updateTime()
+	{
+		if(!isPaused){		// If unpaused
 
 			if (millisecondsCount > 999) {	// milliseconds are counted to 1000
 
@@ -80,7 +81,7 @@ public class TimerImpl extends JPanel implements Timer
 	}
 
 	// Update Hours, Minutes and Seconds TextFields
-	public void updateDisplay() {
+	private void updateDisplay() {
 		hoursString = String.format("%02d", hours);
 		minutesString = String.format("%02d", minutes);
 		secondsString = String.format("%02d", seconds);
@@ -93,7 +94,7 @@ public class TimerImpl extends JPanel implements Timer
 	}
 
 	// Validate the input given in int[] parts, where parts[0] is hours, [1] is minutes, [2] is seconds
-	public void validateInput(int[] parts)
+	private void validateInput(int[] parts)
 	{
 
 		boolean isValueChanged = true;		// Considering it validated at first
@@ -252,7 +253,7 @@ public class TimerImpl extends JPanel implements Timer
 		this.graphicsObservers.add(g);
 	}
 	
-	public void notifyObservers() //Standard for observer pattern
+	private void notifyObservers() //Standard for observer pattern
 	{
 		for(Graphics g : graphicsObservers)
 		{
