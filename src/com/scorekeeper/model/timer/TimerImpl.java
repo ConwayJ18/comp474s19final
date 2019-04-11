@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 import com.scorekeeper.model.graphics.Graphics;
 import com.scorekeeper.model.graphics.QTextField;
 
-public class TimerImpl extends JPanel implements Timer {
-
-	private QTextField hoursField, minutesField, secondsField, colonLabel1, colonLabel2;	// TextFields to show and modify actual values of HH MM SS
+public class TimerImpl extends JPanel implements Timer
+{
+	private String hoursString="00", minutesString="00", secondsString="00";
 	private int millisecondsCount;					// Keeps a count of milliseconds passed to provide higher level of accuracy when pausing and unpausing in fractions of seconds
 	private int hours, seconds, minutes;			// Holds int values
 	private boolean isTimerOn, isPaused;			// If timer is started, If timer is currently paused or not
@@ -25,7 +25,6 @@ public class TimerImpl extends JPanel implements Timer {
 	public TimerImpl()
 	{
 		initializeThread();					// Initialize timer thread
-		initComponents();					// Initialize frame components
 	}
 
 	// Initialize Timer Thread
@@ -41,74 +40,23 @@ public class TimerImpl extends JPanel implements Timer {
 					} catch(Exception e) {
 						System.out.println(e.getMessage());
 					}
-					updateFrame();					// Update the frame
+					updateTime();					// Update the time
 				}
 			}
 		};
 	}
 
-	// Initialize the frame components
-	public void initComponents() {
-		this.setBounds(425, 25, 600, 150);
-
-        // Initialize hours field
-        hoursField = new QTextField("00", 1);
-        format(hoursField);
-        add(hoursField);		// Add hours field to timer panel
-
-        // Initialize colon
-        colonLabel1 = new QTextField(":", 1);
-        format(colonLabel1);
-        add(colonLabel1);
-
-        // Initialize minutes field
-        minutesField = new QTextField("00", 1);
-        format(minutesField);
-        add(minutesField);
-
-        // Initialize colon
-        colonLabel2 = new QTextField(":", 1);
-        format(colonLabel2);
-        add(colonLabel2);
-
-        // Initialize seconds field
-        secondsField = new QTextField("00", 1);
-        format(secondsField);
-        add(secondsField);
-        
-        
-	}
-
 	// Update the frame and data, which is held in this frame
-	public void updateFrame() {
+	public void updateTime() {
 		if(!isPaused) {		// If unpaused
 
 			if (millisecondsCount > 999) {	// milliseconds are counted to 1000
 
 				millisecondsCount = 0;			// reset milliseconds count
-
-				// Parse seconds value to int type
-				String secondsText = secondsField.getText();	// Get value in Seconds Field
-				if (!secondsText.equals("")) {					// If the value isn't empty string
-					seconds = Integer.parseInt(secondsText);		// Then, parse string value to int
-				}
-
-				// Parse minutes value to int type
-				String minutesText = minutesField.getText();
-				if (!minutesText.equals("")) {
-					minutes = Integer.parseInt(minutesText);
-				}
-
-				// Parse hours value to int type
-				String hoursText = hoursField.getText();
-				if (!hoursText.equals("")) {
-					hours = Integer.parseInt(hoursText);
-				}
-
 				seconds++;			// Increment seconds by 1 as milliseconds are counted to 1000
 
 				if (hours > 98 && minutes > 58 && seconds > 58) {		// If max numbers are reached for HH MM and SS
-					updateSeconds();										// Update seconds value for one last time
+					updateDisplay();										// Update time display one last time
 					JOptionPane.showMessageDialog(null, "The Timer is stopped"); // Show user that timer is stopped
 					stopTime();											// Stop the timer
 					return;													// return out of the method
@@ -116,29 +64,15 @@ public class TimerImpl extends JPanel implements Timer {
 
 				if (seconds > 59) {			// If seconds > 59
 					minutes++;					// Increment minutes by 1
-					seconds = 0;				// Reset seconds to 1
-					updateMinutes();			// Update minutes field
-					updateHours();				// Update hours field
+					seconds = 0;				// Reset seconds to 0
 				}
 				if(minutes > 59) {			// If minutes > 59
 					hours++;					// Increment hours and reset minutes and seconds
 					minutes = 0;
 					seconds = 0;
-					updateMinutes();			// Update the fields
-					updateHours();
-				}
-
-				updateSeconds();			// Update seconds field
-
-				if(seconds % 6 == 0) {		// If seconds value is a multiple of 6
-					updateMinutes();			// Update minutes field to get 2-digit value
-					updateHours();				// Update hours field to get 2-digit value
 				}
 				
-				if(alertNecessary())
-				{
-					alert();
-				}
+				updateDisplay(); //Update time
 			}
 
 			millisecondsCount += 10;		// Increment milliseconds count by 10 as this method is called every 10 milliseconds for better accuracy when pausing and unpausing
@@ -146,33 +80,16 @@ public class TimerImpl extends JPanel implements Timer {
 	}
 
 	// Update Hours, Minutes and Seconds TextFields
-	public void updateTime() {
-		updateHours();
-		updateMinutes();
-		updateSeconds();
+	public void updateDisplay() {
+		hoursString = String.format("%02d", hours);
+		minutesString = String.format("%02d", minutes);
+		secondsString = String.format("%02d", seconds);
 		
 		if(alertNecessary())
 		{
-			alert();
+			updateAlerts();
 		}
-	}
-
-	// Update Hours TextField
-	public void updateHours() {
-		String hoursString = String.format("%02d", hours);
-		hoursField.setText(hoursString);
-	}
-
-	// Update Minutes TextField
-	public void updateMinutes() {
-		String minutesString = String.format("%02d", minutes);
-		minutesField.setText(minutesString);
-	}
-
-	// Update Seconds TextField
-	public void updateSeconds() {
-		String secondsString = String.format("%02d", seconds);
-		secondsField.setText(secondsString);
+		notifyObservers();
 	}
 
 	// Validate the input given in int[] parts, where parts[0] is hours, [1] is minutes, [2] is seconds
@@ -226,7 +143,7 @@ public class TimerImpl extends JPanel implements Timer {
         	hours = tempHours;
         	minutes = tempMinutes;
         	seconds = tempSeconds;
-        	updateTime();
+        	updateDisplay();
         }
         else //Else alert the user
         {
@@ -251,10 +168,11 @@ public class TimerImpl extends JPanel implements Timer {
 
 	// Reset all the text fields and count variables
 	public void resetTime() {
-		hoursField.setText("00");
-		minutesField.setText("00");
-		secondsField.setText("00");
+		hours=0;
+		minutes=0;
+		seconds=0;
 		millisecondsCount = 0;
+		updateDisplay();
 	}
 
 	//Return timer status
@@ -287,22 +205,8 @@ public class TimerImpl extends JPanel implements Timer {
 	}
 
 	@Override
-	public void setTime(int hours, int minutes, int seconds) {
-		validateInput(new int[]{hours, minutes, seconds});
-	}
-
-	@Override
-	public int[] getTime() {
-		return new int[]{hours, minutes, seconds};
-	}
-
-	private void format(QTextField field)
-	{
-		Font fieldFont = new Font("MarkerFelt-Wide", Font.PLAIN, 126);
-		field.setFont(fieldFont);
-        field.setEditable(false);
-        field.setHorizontalAlignment(QTextField.CENTER);
-        field.setBorder(null);
+	public String getTime() {
+		return hoursString + "+" + minutesString + ":" + secondsString;
 	}
 	
 	private boolean alertNecessary()
@@ -318,7 +222,7 @@ public class TimerImpl extends JPanel implements Timer {
 		return false;
 	}
 	
-	private void alert() 
+	private void updateAlerts() 
 	{
 		if(minutes == 16)
 		{
@@ -332,12 +236,14 @@ public class TimerImpl extends JPanel implements Timer {
 		{
 			alertMessages.add("Seekers Released!");
 		}
-		notifyObservers();
 	}
 	
 	public void acknowledge() //Clears notification panel
 	{
-		alertMessages.remove();
+		if(!alertMessages.isEmpty())
+		{
+			alertMessages.remove();
+		}
 		notifyObservers();
 	}
 	
@@ -350,6 +256,7 @@ public class TimerImpl extends JPanel implements Timer {
 	{
 		for(Graphics g : graphicsObservers)
 		{
+			g.updateTimer(hoursString + ":" + minutesString + ":" + secondsString);
 			g.updateNotification(alertMessages.peek());
 		}
 	}

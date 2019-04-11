@@ -113,6 +113,13 @@ public class QTextField extends JTextField
 	{
 		this.type = type;
 	}
+	
+	public void setBounds(int x, int y, int width, int height, int fontSize)
+	{
+		Font currentFont = this.getFont();
+		this.setBounds(x, y, width, height);
+		this.setFont(currentFont.deriveFont((float)fontSize));
+	}
 
 	private void format()
 	{
