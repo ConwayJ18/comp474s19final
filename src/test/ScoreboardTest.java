@@ -38,6 +38,9 @@ class ScoreboardTest {
 		assertEquals(sbBrokenBoth.getScore2(), 0);
 	}
 
+	private void assertEquals(int score2, int i) {
+	}
+
 	/*
 	 * These verify the scoreboard setters work
 	 */
@@ -140,7 +143,7 @@ class ScoreboardTest {
 		 * These tests should decrement the scores from 990 to 980
 		 */
 		assertEquals(sb.decrementScore1(),980);
-		assertEquals(sb.decrementScore2(),980);
+		assertEquals(sb.decrementScore2(), 980);
 	}
 	
 	/*
