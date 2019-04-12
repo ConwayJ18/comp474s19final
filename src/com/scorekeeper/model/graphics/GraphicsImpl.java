@@ -15,13 +15,13 @@ import com.scorekeeper.model.timer.TimerImpl;
 public class GraphicsImpl implements Graphics
 {
 	public JFrame frame;
-	Scoreboard scoreboard;
+    public Scoreboard scoreboard;
 	public TimerImpl timer;
 	public QTextField timebox, scorebox1, scorebox2, inputTime, inputScore1, inputScore2, notifications; //Text Fields
 	public QButton startTime, stopReset;	//Timer controls
-	QButton incrementScore1, incrementScore2, decrementScore1, decrementScore2; //Score controls
-	QButton setTime, setScore1, setScore2; //Setter buttons
-	QButton acknowledge; //Acknowledges notifications
+    public QButton incrementScore1, incrementScore2, decrementScore1, decrementScore2; //Score controls
+    public QButton setTime, setScore1, setScore2; //Setter buttons
+    public QButton acknowledge; //Acknowledges notifications
 	
 	public void start()
 	{

@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.scorekeeper.model.graphics.Graphics;
 import org.junit.jupiter.api.Test;
 
 import com.scorekeeper.model.graphics.GraphicsImpl;
@@ -82,6 +83,150 @@ class GraphicsTest {
 	    assertEquals(150, GH.stopReset.getHeight());     //test stopReset height
         Color stopReset_background = new Color(244,204,204);
 	    assertEquals(stopReset_background, GH.stopReset.getBackground());     //test stopReset background color
+
+    }
+
+    @Test
+    void inputTime_test() {
+	    GH.start();
+	    assertEquals(1100, GH.inputTime.getX());     //test inputTime position
+	    assertEquals(25, GH.inputTime.getY());     //test inputTime position
+        assertEquals(325, GH.inputTime.getWidth());     //test inputTime width
+        assertEquals(70, GH.inputTime.getHeight());     //test inputTime width
+        Color inputTime_background = new Color(243,243,243);
+        assertEquals(inputTime_background, GH.inputTime.getBackground());     //test inputTime background color
+
+    }
+
+    @Test
+    void setTime_test() {
+	    GH.start();
+	    assertEquals(1100, GH.setTime.getX());     //test setTime position
+	    assertEquals(105, GH.setTime.getY());     //test setTime position
+        assertEquals(325, GH.setTime.getWidth());     //test setTime width
+        assertEquals(70, GH.setTime.getHeight());     //test setTime height
+        Color setTime_background = new Color(201,218,248);
+        assertEquals(setTime_background, GH.setTime.getBackground());     //test setTime background color
+
+    }
+
+    @Test
+    void incrementScore1_test() {
+	    GH.start();
+	    assertEquals(25, GH.incrementScore1.getX());     //test incrementScore1 position
+        assertEquals(610, GH.incrementScore1.getY());     //test incrementScore1 position
+        assertEquals(100, GH.incrementScore1.getWidth());     //test incrementScore1 width
+        assertEquals(100, GH.incrementScore1.getHeight());     //test incrementScore1 height
+        Color incrementScore1_background = new Color(217,234,211);
+        assertEquals(incrementScore1_background, GH.incrementScore1.getBackground());     //test incrementScore1 background color
+
+    }
+
+    @Test
+    void decrementScore1_test() {
+	    GH.start();
+	    assertEquals(130, GH.decrementScore1.getX());     //test decrementScore1 position
+	    assertEquals(610, GH.decrementScore1.getY());     //test decrementScore1 position
+	    assertEquals(100, GH.decrementScore1.getWidth());     //test decrementScore1 width
+	    assertEquals(100, GH.decrementScore1.getHeight());     //test decrementScore1 height
+        Color decrementScore1_background = new Color(244,204,204);
+        assertEquals(decrementScore1_background, GH.decrementScore1.getBackground());     //test decrementScore1 background color
+
+    }
+
+    @Test
+    void inputScore1_test() {
+	    GH.start();
+	    assertEquals(240, GH.inputScore1.getX());     //test inputScore1 position
+	    assertEquals(610, GH.inputScore1.getY());     //test inputScore1 position
+	    assertEquals(210, GH.inputScore1.getWidth());     //test inputScore1 width
+	    assertEquals(100, GH.inputScore1.getHeight());     //test inputScore1 height
+	    Color inputScore1_background = new Color(243,243,243);
+	    assertEquals(inputScore1_background, GH.inputScore1.getBackground());     //test inputScore1 background color
+
+    }
+
+    @Test
+    void setScore1() {
+	    GH.start();
+	    assertEquals(490, GH.setScore1.getX());     //test setScore1 position
+        assertEquals(610, GH.setScore1.getY());     //test setScore1 position
+        assertEquals(210, GH.setScore1.getWidth());     //test setScore1 width
+        assertEquals(100, GH.setScore1.getHeight());     //test setScore1 height
+        Color setScore1_background = new Color(201,218,248);
+        assertEquals(setScore1_background, GH.setScore1.getBackground());     //test setScore1 background color
+
+    }
+
+    @Test
+    void incrementScore2_test() {
+        GH.start();
+        assertEquals(750, GH.incrementScore2.getX());     //test incrementScore2 position
+        assertEquals(610, GH.incrementScore2.getY());     //test incrementScore2 position
+        assertEquals(100, GH.incrementScore2.getWidth());     //test incrementScore2 width
+        assertEquals(100, GH.incrementScore2.getHeight());     //test incrementScore2 height
+        Color incrementScore1_background = new Color(217, 234, 211);
+        assertEquals(incrementScore1_background, GH.incrementScore2.getBackground());     //test incrementScore2 background color
+
+    }
+
+    @Test
+    void decrementScore2_test() {
+	    GH.start();
+	    assertEquals(860, GH.decrementScore2.getX());     //test decrementScore2 position
+        assertEquals(610, GH.decrementScore2.getY());     //test decrementScore2 position
+        assertEquals(100, GH.decrementScore2.getWidth());     //test decrementScore2 width
+        assertEquals(100, GH.decrementScore2.getHeight());     //test decrementScore2 height
+        Color decrementScore2_background = new Color(244,204,204);
+        assertEquals(decrementScore2_background, GH.decrementScore2.getBackground());     //test decrementScore2 background color
+
+    }
+
+    @Test
+    void inputScore2_test() {
+        GH.start();
+        assertEquals(970, GH.inputScore2.getX());     //test inputScore2 position
+        assertEquals(610, GH.inputScore2.getY());     //test inputScore2 position
+        assertEquals(210, GH.inputScore2.getWidth());     //test inputScore2 width
+        assertEquals(100, GH.inputScore2.getHeight());     //test inputScore2 height
+        Color inputScore1_background = new Color(243,243,243);
+        assertEquals(inputScore1_background, GH.inputScore2.getBackground());     //test inputScore2 background color
+
+    }
+
+    @Test
+    void setScore2_test() {
+        GH.start();
+        assertEquals(1210, GH.setScore2.getX());     //test setScore2 position
+        assertEquals(610, GH.setScore2.getY());     //test setScore2 position
+        assertEquals(210, GH.setScore2.getWidth());     //test setScore2 width
+        assertEquals(100, GH.setScore2.getHeight());     //test setScore2 height
+        Color setScore1_background = new Color(201,218,248);
+        assertEquals(setScore1_background, GH.setScore2.getBackground());     //test setScore2 background color
+
+    }
+
+    @Test
+    void notifications_test() {
+	    GH.start();
+	    assertEquals(25, GH.notifications.getX());     //test notifications position
+	    assertEquals(720, GH.notifications.getY());     //test notifications position
+	    assertEquals(1000, GH.notifications.getWidth());     //test notifications width
+	    assertEquals(50, GH.notifications.getHeight());     //test notifications height
+	    Color notification_background = new Color(243,243,243);
+	    assertEquals(notification_background, GH.notifications.getBackground());     //test notifications background color
+
+    }
+
+    @Test
+    void acknowledge_test() {
+	    GH.start();
+	    assertEquals(1035, GH.acknowledge.getX());     //test acknowledge position
+        assertEquals(720, GH.acknowledge.getY());     //test acknowledge position
+        assertEquals(390, GH.acknowledge.getWidth());     //test acknowledge width
+        assertEquals(50, GH.acknowledge.getHeight());     //test acknowledge height
+        Color acknowledge_background = new Color(217,234,211);
+        assertEquals(acknowledge_background, GH.acknowledge.getBackground());     //test acknowledge background color
 
     }
 }
