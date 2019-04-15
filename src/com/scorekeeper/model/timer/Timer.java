@@ -4,12 +4,12 @@ import com.scorekeeper.model.graphics.Graphics;
 
 public interface Timer
 {
-	abstract void startTime();
-	abstract void stopTime();
-	abstract void resetTime();
-	abstract boolean isRunning();
-	abstract void setTime(String time);
-	abstract String getTime();
-	abstract void acknowledge();
-	abstract void addObserver(Graphics g);
+	void startTime();
+	void stopTime();
+	void resetTime();
+	boolean isRunning();
+	void setTime(String time);
+	String getTime();
+	void acknowledge();
+	void addObserver(Graphics g);
 }
