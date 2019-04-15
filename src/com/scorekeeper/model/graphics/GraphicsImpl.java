@@ -209,6 +209,8 @@ public class GraphicsImpl implements Graphics
 		    	resizeComponents();
 		    }
 		});
+		
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 
 	private void resizeComponents()
@@ -216,25 +218,25 @@ public class GraphicsImpl implements Graphics
 		int frameWidth = frame.getWidth();
 		int frameHeight = frame.getHeight();
 		
-		scorebox1.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 400*frameHeight/800, 256*frameHeight/800);
+		scorebox1.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 400*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
 		incrementScore1.setBounds(25*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
 	    decrementScore1.setBounds(130*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
-	    inputScore1.setBounds(240*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800, 72*frameHeight/800);
+	    inputScore1.setBounds(240*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800, Math.min(72*frameWidth/1450,72*frameHeight/800));
 	    setScore1.setBounds(490*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800);
 	    
-	    scorebox2.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 400*frameHeight/800, 256*frameHeight/800);
+	    scorebox2.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 400*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
 	    incrementScore2.setBounds(750*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
 	    decrementScore2.setBounds(860*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
-	    inputScore2.setBounds(970*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800, 72*frameHeight/800);
+	    inputScore2.setBounds(970*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800, Math.min(72*frameWidth/1450,72*frameHeight/800));
 	    setScore2.setBounds(1210*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800);
 		
-		timebox.setBounds(425*frameWidth/1450, 25*frameHeight/800, 600*frameWidth/1450, 150*frameHeight/800, 126*frameHeight/800);
+		timebox.setBounds(425*frameWidth/1450, 25*frameHeight/800, 600*frameWidth/1450, 150*frameHeight/800, Math.min(126*frameWidth/1450,126*frameHeight/800));
 		startTime.setBounds(25*frameWidth/1450, 25*frameHeight/800, 150*frameWidth/1450, 150*frameHeight/800);
 	    stopReset.setBounds(185*frameWidth/1450, 25*frameHeight/800, 150*frameWidth/1450, 150*frameHeight/800);
-	    inputTime.setBounds(1100*frameWidth/1450, 25*frameHeight/800, 325*frameWidth/1450, 70*frameHeight/800, 48*frameHeight/800);
+	    inputTime.setBounds(1100*frameWidth/1450, 25*frameHeight/800, 325*frameWidth/1450, 70*frameHeight/800, Math.min(48*frameWidth/1450,48*frameHeight/800));
 	    setTime.setBounds(1100*frameWidth/1450, 105*frameHeight/800, 325*frameWidth/1450, 70*frameHeight/800);
 	    
-	    notifications.setBounds(25*frameWidth/1450, 720*frameHeight/800, 1000*frameWidth/1450, 50*frameHeight/800, 24*frameHeight/800);
+	    notifications.setBounds(25*frameWidth/1450, 720*frameHeight/800, 1000*frameWidth/1450, 50*frameHeight/800, Math.min(24*frameWidth/1450,24*frameHeight/800));
 	    acknowledge.setBounds(1035*frameWidth/1450, 720*frameHeight/800, 390*frameWidth/1450, 50*frameHeight/800);
 	}
 	
