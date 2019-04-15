@@ -207,7 +207,7 @@ public class TimerImpl extends JPanel implements Timer
 
 	@Override
 	public String getTime() {
-		return hoursString + "+" + minutesString + ":" + secondsString;
+		return hoursString + ":" + minutesString + ":" + secondsString;
 	}
 	
 	private boolean alertNecessary()
