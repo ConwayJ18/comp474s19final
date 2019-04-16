@@ -251,4 +251,16 @@ public class GraphicsImpl implements Graphics
 	{
 		notifications.setText(alertMessage);
 	}
+
+	@Override
+	public void hide()
+	{
+		frame.setVisible(false);
+	}
+
+	@Override
+	public void show()
+	{
+		frame.setVisible(true);
+	}
 }

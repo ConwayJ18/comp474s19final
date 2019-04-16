@@ -25,6 +25,16 @@ class GraphicsTest {
 
 	}
 
+	@Test
+    void show_hide_tests() {
+	    GH.start();
+	    assert(GH.frame.isVisible());
+	    GH.hide();
+	    assert(!GH.frame.isVisible());
+	    GH.show();
+	    assert(GH.frame.isVisible());
+    }
+	
     @Test
 	void timer_test() {
 		GH.start();
