@@ -18,7 +18,7 @@ class GraphicsTest {
 		GH.start();
 		assertEquals("Quidditch Scorekeeper", GH.frame.getTitle());     //test frame title
 		assertEquals(800, GH.frame.getHeight());     //test frame height
-		assertEquals(1450, GH.frame.getWidth());     //test frame width
+		assertEquals(1440, GH.frame.getWidth());     //test frame width
 		Color frame_background;
 		frame_background = new Color(153, 153, 153);
 		assertEquals(frame_background, GH.frame.getContentPane().getBackground());     //test frame background color

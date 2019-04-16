@@ -37,7 +37,6 @@ class QTextFieldTest {
 		assertEquals(QTextField.CENTER, C.getHorizontalAlignment());     //test horizontal alignment setting for type1
 		assertNull(C.getBorder());     //test border setting
 		assertTrue(C.isVisible());     //test visibility setting
-		assertEquals("Dialog", C.getFont().getFamily());     //test font family
 		assertEquals("MarkerFelt-Wide", C.getFont().getName());     //test font name
 		assertEquals(Font.PLAIN, C.getFont().getStyle());     //test font style
 		assertEquals(126, C.getFont().getSize());     //test font size
@@ -51,7 +50,6 @@ class QTextFieldTest {
 		assertNull(D.getBorder());     //test border setting
 		assertTrue(D.isVisible());     //test visibility setting
 		assertEquals("text", D.getText());     //test text field setting
-		assertEquals("Dialog", D.getFont().getFamily());     //test font family
 		assertEquals("MarkerFelt-Wide", D.getFont().getName());     //test font name
 		assertEquals(Font.PLAIN, D.getFont().getStyle());     //test font style
 		assertEquals(256, D.getFont().getSize());     //test font size
@@ -73,7 +71,6 @@ class QTextFieldTest {
 		assertEquals(QTextField.CENTER, F.getHorizontalAlignment());     //test horizontal alignment setting for type3
 		assertNull(F.getBorder());     //test border setting
 		assertTrue(F.isVisible());     //test visibility setting
-		assertEquals("Dialog", F.getFont().getFamily());     //test font family
 		assertEquals("MarkerFelt-Wide", F.getFont().getName());     //test font name
 		assertEquals(Font.PLAIN, F.getFont().getStyle());     //test font style
 		assertEquals(48, F.getFont().getSize());     //test font size
@@ -93,7 +90,6 @@ class QTextFieldTest {
 		assertNull(H.getBorder());     //test border setting
 		assertTrue(H.isVisible());     //test visibility setting
 		assertEquals("text", H.getText());     //test text field setting
-		assertEquals("Dialog", H.getFont().getFamily());     //test font family
 		assertEquals("MarkerFelt-Wide", H.getFont().getName());     //test font name
 		assertEquals(Font.PLAIN, H.getFont().getStyle());     //test font style
 		assertEquals(72, H.getFont().getSize());     //test font size
@@ -129,7 +125,6 @@ class QTextFieldTest {
 		assertNull(L.getBorder());     //test border setting
 		assertTrue(L.isVisible());     //test visibility setting
 		assertEquals("text", L.getText());     //test text field setting
-		assertEquals("Dialog",  L.getFont().getFamily());     //test font family
 		assertEquals("MarkerFelt-Wide", L.getFont().getName());     //test font name
 		assertEquals(Font.PLAIN, L.getFont().getStyle());     //test font style
 		assertEquals(24, L.getFont().getSize());     //test font size
@@ -138,7 +133,4 @@ class QTextFieldTest {
 		assertEquals(5, L.getWidth());
 		assertEquals(5, L.getHeight());     //test position and dimension of QTextField
 	}
-}
-
-
 }
