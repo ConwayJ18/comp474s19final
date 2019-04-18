@@ -261,4 +261,9 @@ public class TimerImpl extends JPanel implements Timer
 			g.updateNotification(alertMessages.peek());
 		}
 	}
+	
+	public int[] getTimeArray()
+	{
+		return new int[]{hours, minutes, seconds};
+	}
 }
