@@ -50,22 +50,32 @@ class ScoreboardTest {
 		/*
 		 * These tests should return the new values of score1
 		 */
-		assertEquals(sb.setScore1(0), 0); //0 is valid
-		assertEquals(sb.setScore1(10), 10); //10 is valid
-		assertEquals(sb.setScore1(980), 980); //980 is valid
-		assertEquals(sb.setScore1(990), 990); //990 is valid
+		sb.setScore1(0);
+		assertEquals(sb.getScore1(), 0); //0 is valid
+		sb.setScore1(10);
+		assertEquals(sb.getScore1(), 10); //10 is valid
+		sb.setScore1(980);
+		assertEquals(sb.getScore1(), 980); //980 is valid
+		sb.setScore1(990);
+		assertEquals(sb.getScore1(), 990); //990 is valid
 		
 		/*
 		 * These tests should return 990 since
 		 * that's what the scores were most recently set to above
 		 * (This indicates failure, as wanted)
 		 */
-		assertEquals(sb.setScore1(-10), 990); //Negative
-		assertEquals(sb.setScore1(-5), 990); //Negative and not divisible by 10
-		assertEquals(sb.setScore1(5), 990); //Not divisible by 10
-		assertEquals(sb.setScore1(985), 990); //Not divisible by 10
-		assertEquals(sb.setScore1(995), 990); //Greater than 990 and not visible by 10
-		assertEquals(sb.setScore1(1000), 990); //Greater than 990
+		sb.setScore1(-10);
+		assertEquals(sb.getScore1(), 990); //Negative
+		sb.setScore1(-5);
+		assertEquals(sb.getScore1(), 990); //Negative and not divisible by 10
+		sb.setScore1(5);
+		assertEquals(sb.getScore1(), 990); //Not divisible by 10
+		sb.setScore1(985);
+		assertEquals(sb.getScore1(), 990); //Not divisible by 10
+		sb.setScore1(995);
+		assertEquals(sb.getScore1(), 990); //Greater than 990 and not visible by 10
+		sb.setScore1(1000);
+		assertEquals(sb.getScore1(), 990); //Greater than 990
 		
 		/*
 		 * Repeat the above for score2
@@ -74,22 +84,32 @@ class ScoreboardTest {
 		/*
 		 * These tests should return the new values
 		 */
-		assertEquals(sb.setScore2(0), 0); //0 is valid
-		assertEquals(sb.setScore2(10), 10); //10 is valid
-		assertEquals(sb.setScore2(980), 980); //980 is valid
-		assertEquals(sb.setScore2(990), 990); //990 is valid
+		sb.setScore2(0);
+		assertEquals(sb.getScore2(), 0); //0 is valid
+		sb.setScore2(10);
+		assertEquals(sb.getScore2(), 10); //10 is valid
+		sb.setScore2(980);
+		assertEquals(sb.getScore2(), 980); //980 is valid
+		sb.setScore2(990);
+		assertEquals(sb.getScore2(), 990); //990 is valid
 		
 		/*
 		 * These tests should return 990 since
 		 * that's what the scores were most recently set to above
 		 * (This indicates failure, as wanted)
 		 */
-		assertEquals(sb.setScore2(-10), 990); //Negative
-		assertEquals(sb.setScore2(-5), 990); //Negative and not divisible by 10
-		assertEquals(sb.setScore2(5), 990); //Not divisible by 10
-		assertEquals(sb.setScore2(985), 990); //Not divisible by 10
-		assertEquals(sb.setScore2(995), 990); //Greater than 990 and not visible by 10
-		assertEquals(sb.setScore2(1000), 990); //Greater than 990
+		sb.setScore2(-10);
+		assertEquals(sb.getScore2(), 990); //Negative
+		sb.setScore2(-5);
+		assertEquals(sb.getScore2(), 990); //Negative and not divisible by 10
+		sb.setScore2(5);
+		assertEquals(sb.getScore2(), 990); //Not divisible by 10
+		sb.setScore2(985);
+		assertEquals(sb.getScore2(), 990); //Not divisible by 10
+		sb.setScore2(995);
+		assertEquals(sb.getScore2(), 990); //Greater than 990 and not visible by 10
+		sb.setScore2(1000);
+		assertEquals(sb.getScore2(), 990); //Greater than 990
 	}
 	
 	/*
@@ -121,14 +141,18 @@ class ScoreboardTest {
 		/*
 		 * These tests shouldn't do anything because the scores are already 0
 		 */
-		assertEquals(sb.decrementScore1(),0);
-		assertEquals(sb.decrementScore2(),0);
+		sb.decrementScore1();
+		sb.decrementScore2();
+		assertEquals(sb.getScore1(),0);
+		assertEquals(sb.getScore2(),0);
 		
 		/*
 		 * These tests should increment the scores from 0 to 10
 		 */
-		assertEquals(sb.incrementScore1(),10);
-		assertEquals(sb.incrementScore2(),10);
+		sb.incrementScore1();
+		sb.incrementScore2();
+		assertEquals(sb.getScore1(),10);
+		assertEquals(sb.getScore2(),10);
 		
 		sb.setScore1(990); //Set scores to 990
 		sb.setScore2(990); //We know this works because of earlier tests
@@ -136,14 +160,18 @@ class ScoreboardTest {
 		/*
 		 * These tests shouldn't do anything because the scores are already 990
 		 */
-		assertEquals(sb.incrementScore1(),990);
-		assertEquals(sb.incrementScore2(),990);
+		sb.incrementScore1();
+		sb.incrementScore2();
+		assertEquals(sb.getScore1(),990);
+		assertEquals(sb.getScore2(),990);
 		
 		/*
 		 * These tests should decrement the scores from 990 to 980
 		 */
-		assertEquals(sb.decrementScore1(),980);
-		assertEquals(sb.decrementScore2(), 980);
+		sb.decrementScore1();
+		sb.decrementScore2();
+		assertEquals(sb.getScore1(),980);
+		assertEquals(sb.getScore2(), 980);
 	}
 	
 	/*
