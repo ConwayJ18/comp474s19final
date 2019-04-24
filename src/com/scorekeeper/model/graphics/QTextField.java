@@ -146,7 +146,7 @@ public class QTextField extends JTextField
 				Font inputTimeFont = new Font("MarkerFelt-Wide", Font.PLAIN, 48); //Create font for inputTime
 				this.setFont(inputTimeFont); //inputTime should have the font created above
 	            break; 
-	        case 4: //Score Input
+	        case 4: //Score Input & Team Names
 	        	Font inputScoreFont = new Font("MarkerFelt-Wide", Font.PLAIN, 72); //Create font for setScore1
 	    		this.setFont(inputScoreFont); //setScore1 should have the font created above
 	            break; 

@@ -12,7 +12,7 @@ import com.scorekeeper.model.scoreboard.Scoreboard;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
 import com.scorekeeper.model.timer.TimerImpl;
 
-public class GraphicsImpl implements Graphics
+public class ControlDisplay implements Graphics
 {
 	public JFrame frame;
     public Scoreboard scoreboard;
@@ -23,16 +23,15 @@ public class GraphicsImpl implements Graphics
     public QButton setTime, setScore1, setScore2; //Setter buttons
     public QButton acknowledge; //Acknowledges notifications
 	
-	public void start()
+	public void start(TimerImpl t, ScoreboardImpl s)
 	{
 		frame = new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
 		frame.setSize(1450, 800); //Set window size
 		frame.getContentPane().setBackground(new Color(153,153,153)); //Dark gray
-		scoreboard = new ScoreboardImpl(); //Creates a scoreboard object for use
-		timer = new TimerImpl(); //Creates a timer object for use
-		timer.addObserver(this);
+		timer = t;
 		timer.setBackground(new Color(243,243,243)); //Light gray
 		timer.setBounds(425, 25, 600, 150);
+		scoreboard = s; //Creates a scoreboard object for use
 		
 		/*
 		 * Begin creation of buttons & windows
@@ -109,21 +108,21 @@ public class GraphicsImpl implements Graphics
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {  
-	        	scorebox1.setText(String.valueOf(scoreboard.incrementScore1()));
+	        	scoreboard.incrementScore1();
 	        }  
 	    }); 
 	    decrementScore1.addActionListener(new ActionListener() //Dictates what happens when decrementScore1 button is clicked
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {  
-	        	scorebox1.setText(String.valueOf(scoreboard.decrementScore1()));
+	        	scoreboard.decrementScore1();
 	        }  
 	    }); 
 	    setScore1.addActionListener(new ActionListener() //Dictates what happens when setScore1 button is clicked
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {  
-	        	scorebox1.setText(String.valueOf(scoreboard.setScore1(Integer.valueOf(inputScore1.getText()))));
+	        	scoreboard.setScore1(Integer.valueOf(inputScore1.getText()));
 	        }  
 	    }); 
 	    
@@ -132,21 +131,21 @@ public class GraphicsImpl implements Graphics
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {  
-	        	scorebox2.setText(String.valueOf(scoreboard.incrementScore2()));
+	        	scoreboard.incrementScore2();
 	        }  
 	    }); 
 	    decrementScore2.addActionListener(new ActionListener() //Dictates what happens when decrementScore2 button is clicked
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {  
-	        	scorebox2.setText(String.valueOf(scoreboard.decrementScore2()));
+	        	scoreboard.decrementScore2();
 	        }  
 	    }); 
 	    setScore2.addActionListener(new ActionListener() //Dictates what happens when setScore2 button is clicked
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	scorebox2.setText(String.valueOf(scoreboard.setScore2(Integer.valueOf(inputScore2.getText()))));
+	        	scoreboard.setScore2(Integer.valueOf(inputScore2.getText()));
 	        }  
 	    }); 
 	    
@@ -245,11 +244,18 @@ public class GraphicsImpl implements Graphics
 	{
 		timebox.setText(currentTime);
 	}
-
+	
 	@Override
 	public void updateNotification(String alertMessage)
 	{
 		notifications.setText(alertMessage);
+	}
+	
+	@Override
+	public void updateScore()
+	{
+		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
+		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
 	}
 
 	@Override

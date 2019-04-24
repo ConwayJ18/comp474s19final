@@ -1,10 +1,14 @@
 package com.scorekeeper.model.graphics;
 
+import com.scorekeeper.model.scoreboard.ScoreboardImpl;
+import com.scorekeeper.model.timer.TimerImpl;
+
 public interface Graphics 
 {
-	void start();
+	void start(TimerImpl t, ScoreboardImpl s);
 	void hide();
 	void show();
-	void updateNotification(String alertMessage);
 	void updateTimer(String string);
+	void updateNotification(String string);
+	void updateScore();
 }

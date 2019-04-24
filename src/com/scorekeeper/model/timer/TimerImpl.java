@@ -1,6 +1,5 @@
 package com.scorekeeper.model.timer;
 
-import java.awt.Font;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -9,7 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.scorekeeper.model.graphics.Graphics;
-import com.scorekeeper.model.graphics.QTextField;
 
 public class TimerImpl extends JPanel implements Timer
 {

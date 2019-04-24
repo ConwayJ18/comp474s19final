@@ -1,11 +1,16 @@
 package com.scorekeeper.model.scoreboard;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
+import com.scorekeeper.model.graphics.Graphics;
 
 public class ScoreboardImpl implements Scoreboard
 {
 	int score1;
 	int score2;
+	private ArrayList<Graphics> GraphicsObservers = new ArrayList<Graphics>();
 	
 	/**
 	 * Default constructor
@@ -52,14 +57,13 @@ public class ScoreboardImpl implements Scoreboard
 	/**
 	 * @param score1 the score1 to set
 	 */
-	public int setScore1(int score1)
+	public void setScore1(int score1)
 	{
 		if(isValid(score1)) //Update if valid
 		{
 			this.score1 = score1;
 		}
-
-		return this.score1; //Return new score
+		notifyObservers();
 	}
 
 	/**
@@ -73,62 +77,63 @@ public class ScoreboardImpl implements Scoreboard
 	/**
 	 * @param score2 the score1 to set , must be multiples of 10
 	 */
-	public int setScore2(int score2)
+	public void setScore2(int score2)
 	{
 		if(isValid(score2)) //Update if valid
 		{
 			this.score2 = score2;
 		}
-
-		return this.score2; //Return new score
+		notifyObservers();
 	}
 	
 	@Override
-	public int incrementScore1()
+	public void incrementScore1()
 	{
         if (this.score1 < 990) { //If score can be incremented
             this.score1 += 10; //Increment score
         }
-        return this.score1;
+        notifyObservers();
 	}
 	
 	@Override
-	public int incrementScore2()
+	public void incrementScore2()
 	{
         if (this.score2 < 990) { //If score can be incremented
             this.score2 += 10; //Increment score
         }
-        return this.score2;
+        notifyObservers();
 	}
 	
 	@Override
-	public int decrementScore1()
+	public void decrementScore1()
 	{
 		if (this.score1 > 0) { //If score can be decremented
 			this.score1 -= 10; //Decrement score
 		}
-		return this.score1;
+		notifyObservers();
 	}
 	
 	@Override
-	public int decrementScore2()
+	public void decrementScore2()
 	{
 		if (this.score2 > 0) { //If score can be decremented
 			this.score2 -= 10; //Decrement score
 		}
-		return this.score2;
+		notifyObservers();
 	}
 
 	@Override
 	public void resetScore1()
 	{
         this.score1 = 0; //Reset score1 to 0
+        notifyObservers();
 	}
 	
 	@Override
 	public void resetScore2()
 	{
         this.score2 = 0; //Reset score2 to 0
+        notifyObservers();
 	}
 	
 	@Override
@@ -136,6 +141,7 @@ public class ScoreboardImpl implements Scoreboard
 	{
 		this.score1 = 0; //Reset scores to 0
 		this.score2 = 0;
+		notifyObservers();
 	}
 	
 	/*
@@ -156,6 +162,26 @@ public class ScoreboardImpl implements Scoreboard
 		{
 			JOptionPane.showMessageDialog(null, "Please enter a valid value for score."); //Alert
 			return false;
+		}
+	}
+
+	@Override
+	public void addObserver(Graphics g)
+	{
+		GraphicsObservers.add(g);		
+	}
+	
+	@Override
+	public void removeObserver(Graphics g)
+	{
+		GraphicsObservers.remove(g);		
+	}
+	
+	private void notifyObservers()
+	{
+		for(Graphics g : GraphicsObservers)
+		{
+			g.updateScore();
 		}
 	}
 }
