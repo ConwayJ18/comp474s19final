@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import com.scorekeeper.model.scoreboard.Scoreboard;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
+import com.scorekeeper.model.team.TeamImpl;
 import com.scorekeeper.model.timer.TimerImpl;
 
 public class OutwardDisplay implements Graphics
@@ -15,9 +16,10 @@ public class OutwardDisplay implements Graphics
 	public JFrame frame;
     public Scoreboard scoreboard;
 	public TimerImpl timer;
-	public QTextField timebox, scorebox1, scorebox2, team1, team2, notifications; //Text Fields
+	public QTextField timebox, scorebox1, scorebox2, teamName1, teamName2, notifications; //Text Fields
+	public TeamImpl team1, team2;
 	
-	public void start(TimerImpl t, ScoreboardImpl s)
+	public void start(TimerImpl t, ScoreboardImpl s, TeamImpl t1, TeamImpl t2)
 	{
 		frame = new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
 		frame.setSize(1450, 800); //Set window size
@@ -36,8 +38,8 @@ public class OutwardDisplay implements Graphics
 		//Create scoreboxes
 		scorebox1=new QTextField("0", 2, 25, 200, 675, 450); //Set default value & position
 	    scorebox2=new QTextField("0", 2, 750, 200, 675, 450); //Set default value & position
-	    team1=new QTextField("Team 1", 4, 25, 660, 675, 100);
-	    team2=new QTextField("Team 2", 4, 750, 660, 675, 100);
+	    teamName1=new QTextField("Team 1", 4, 25, 660, 675, 100);
+	    teamName2=new QTextField("Team 2", 4, 750, 660, 675, 100);
 	    /*
 		 * End creation of buttons & windows
 		 */
@@ -49,8 +51,8 @@ public class OutwardDisplay implements Graphics
 		
 	    frame.add(scorebox1); //Add scoreboxes to window
 	    frame.add(scorebox2);
-	    frame.add(team1);
-	    frame.add(team2);
+	    frame.add(teamName1);
+	    frame.add(teamName2);
 	    /*
 		 * End adding items to window
 		 */
@@ -81,8 +83,8 @@ public class OutwardDisplay implements Graphics
 		
 		scorebox1.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 450*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));	    
 	    scorebox2.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 450*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
-	    team1.setBounds(25*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));	    
-	    team2.setBounds(750*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));
+	    teamName1.setBounds(25*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));	    
+	    teamName2.setBounds(750*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));
 		timebox.setBounds(425*frameWidth/1450, 25*frameHeight/800, 600*frameWidth/1450, 150*frameHeight/800, Math.min(126*frameWidth/1450,126*frameHeight/800));
 	}
 	
@@ -100,6 +102,13 @@ public class OutwardDisplay implements Graphics
 	{
 		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
 		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
+	}
+	
+	@Override
+	public void updateTeams()
+	{
+		teamName1.setText(team1.getTeamName());
+		teamName2.setText(team2.getTeamName());
 	}
 	
 	@Override

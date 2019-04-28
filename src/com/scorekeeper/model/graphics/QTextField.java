@@ -137,23 +137,37 @@ public class QTextField extends JTextField
 				this.setFont(timeFont);
 		        this.setEditable(false);
 	            break; 
-	        case 2: //Score Display
-	        	Font scorebox = new Font("MarkerFelt-Wide", Font.PLAIN, 256); //Create a font
+	        case 2: //Score Display (Outward)
+	        	Font scoreboxOut = new Font("MarkerFelt-Wide", Font.PLAIN, 256); //Create a font
 	    		this.setEditable(false); //You cannot type into scoreboxes
-	    		this.setFont(scorebox); //Scoreboxes should use the font created above
+	    		this.setFont(scoreboxOut); //Scoreboxes should use the font created above
 	            break; 
-			case 3: //Time Input
-				Font inputTimeFont = new Font("MarkerFelt-Wide", Font.PLAIN, 48); //Create font for inputTime
-				this.setFont(inputTimeFont); //inputTime should have the font created above
-	            break; 
-	        case 4: //Score Input & Team Names
+	        case 4: //Team Names
 	        	Font inputScoreFont = new Font("MarkerFelt-Wide", Font.PLAIN, 72); //Create font for setScore1
 	    		this.setFont(inputScoreFont); //setScore1 should have the font created above
+	            break; 
+	        case 3: //Time Input
+				Font inputTimeFont = new Font("MarkerFelt-Wide", Font.PLAIN, 48); //Create font for inputTime
+				this.setFont(inputTimeFont); //inputTime should have the font created above
 	            break; 
 	        case 5: //Notification Display
 	        	Font notificationFont = new Font("MarkerFelt-Wide", Font.PLAIN, 24); //Create font for inputTime
 	    		this.setFont(notificationFont); //inputTime should have the font created above
 	    		this.setEditable(false); //Notification field should not be editable
+	            break;
+	        case 6: //Score Display (Inward)
+	        	Font scoreboxIn = new Font("MarkerFelt-Wide", Font.PLAIN, 75); //Create font for setScore1
+	    		this.setFont(scoreboxIn); //setScore1 should have the font created above
+	    		this.setEditable(false);
+	            break; 
+	        case 7: //Score Input
+	        	Font setScore = new Font("MarkerFelt-Wide", Font.PLAIN, 50); //Create font for setScore1
+	    		this.setFont(setScore); //setScore1 should have the font created above
+	            break; 
+	        case 8: //Player stats
+	        	Font playerStats = new Font("MarkerFelt-Wide", Font.PLAIN, 36); //Create font for setScore1
+	    		this.setFont(playerStats); //setScore1 should have the font created above
+	    		this.setEditable(false);
 	            break; 
 	        default: 
 	            this.setVisible(false);

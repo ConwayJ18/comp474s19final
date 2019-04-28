@@ -131,7 +131,7 @@ public class QButton extends JButton
 			case 3: //Red buttons
 			    this.setBackground(new Color(244,204,204)); //Red
 			    break;
-			case 4:
+			case 4: //Blue buttons
 			    this.setBackground(new Color(201,218,248)); //Blue
 	            break; 
 	        default: 

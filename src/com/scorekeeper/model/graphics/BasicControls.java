@@ -10,9 +10,10 @@ import javax.swing.JFrame;
 
 import com.scorekeeper.model.scoreboard.Scoreboard;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
+import com.scorekeeper.model.team.TeamImpl;
 import com.scorekeeper.model.timer.TimerImpl;
 
-public class ControlDisplay implements Graphics
+public class BasicControls implements Graphics
 {
 	public JFrame frame;
     public Scoreboard scoreboard;
@@ -23,15 +24,23 @@ public class ControlDisplay implements Graphics
     public QButton setTime, setScore1, setScore2; //Setter buttons
     public QButton acknowledge; //Acknowledges notifications
 	
-	public void start(TimerImpl t, ScoreboardImpl s)
+    public void start(TimerImpl t, ScoreboardImpl s, TeamImpl t1, TeamImpl t2)
+	{
+		initializeParts(t, s);
+		initializeActions();
+		buildScreen();
+		enableResizing();
+	}
+    
+	public void initializeParts(TimerImpl t, ScoreboardImpl s)
 	{
 		frame = new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
 		frame.setSize(1450, 800); //Set window size
 		frame.getContentPane().setBackground(new Color(153,153,153)); //Dark gray
-		timer = t;
+		scoreboard = s; //Creates a scoreboard object for use
+		timer = t; //Creates a timer object for use
 		timer.setBackground(new Color(243,243,243)); //Light gray
 		timer.setBounds(425, 25, 600, 150);
-		scoreboard = s; //Creates a scoreboard object for use
 		
 		/*
 		 * Begin creation of buttons & windows
@@ -67,8 +76,12 @@ public class ControlDisplay implements Graphics
 	    /*
 		 * End creation of buttons & windows
 		 */
-		
-	    /*
+	}	
+	    
+	 
+	public void initializeActions()
+	{
+		/*
 		 * Begin assignment of button functions
 		 */
 	    //Controls to update timer
@@ -160,7 +173,10 @@ public class ControlDisplay implements Graphics
 	    /*
 		 * End assignment of button functions
 		 */
-	    
+	}
+	 
+	public void buildScreen()
+	{
 	    /*
 		 * Begin adding items to window
 		 */
@@ -199,7 +215,10 @@ public class ControlDisplay implements Graphics
 		//frame.setResizable(false); //Disallows resizing the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Makes program quit when the window closes
 		frame.setVisible(true); //Makes the window visible
-		
+	}
+	
+	public void enableResizing()
+	{
 		/*
 		 * Add detection of window size
 		 */
@@ -244,18 +263,11 @@ public class ControlDisplay implements Graphics
 	{
 		timebox.setText(currentTime);
 	}
-	
+
 	@Override
 	public void updateNotification(String alertMessage)
 	{
 		notifications.setText(alertMessage);
-	}
-	
-	@Override
-	public void updateScore()
-	{
-		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
-		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
 	}
 
 	@Override
@@ -269,4 +281,14 @@ public class ControlDisplay implements Graphics
 	{
 		frame.setVisible(true);
 	}
+
+	@Override
+	public void updateScore()
+	{
+		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
+		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
+	}
+
+	@Override
+	public void updateTeams() {	}
 }
