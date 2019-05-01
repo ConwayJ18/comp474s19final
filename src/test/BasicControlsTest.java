@@ -60,7 +60,7 @@ class GraphicsTest {
 	    assertEquals(25, bc.scorebox1.getX());     //test scoreboard1 position
 	    assertEquals(200, bc.scorebox1.getY());     //test scoreboard1 position
 	    assertEquals(675, bc.scorebox1.getWidth());     //test scoreboard1 width
-	    assertEquals(400, bc.scorebox1.getHeight());      //test scoreboard1 height
+	    assertEquals(350, bc.scorebox1.getHeight());      //test scoreboard1 height
         Color scorebox1_background = new Color(243,243,243);
         assertEquals(scorebox1_background, bc.scorebox1.getBackground());     //test scoreboard1 background color
 
@@ -72,7 +72,31 @@ class GraphicsTest {
         assertEquals(750, bc.scorebox2.getX());     //test scoreboard2 position
         assertEquals(200, bc.scorebox2.getY());     //test scoreboard2 position
         assertEquals(675, bc.scorebox2.getWidth());     //test scoreboard2 width
-        assertEquals(400, bc.scorebox2.getHeight());      //test scoreboard2 height
+        assertEquals(350, bc.scorebox2.getHeight());      //test scoreboard2 height
+        Color scorebox2_background = new Color(243,243,243);
+        assertEquals(scorebox2_background, bc.scorebox1.getBackground());     //test scoreboard2 background color
+
+    }
+    
+    @Test
+    void teamName1_test() {
+	    bc.start(t,sb,t1,t2);
+	    assertEquals(25, bc.teamName1.getX());     //test scoreboard1 position
+	    assertEquals(550, bc.teamName1.getY());     //test scoreboard1 position
+	    assertEquals(675, bc.teamName1.getWidth());     //test scoreboard1 width
+	    assertEquals(50, bc.teamName1.getHeight());      //test scoreboard1 height
+        Color scorebox1_background = new Color(243,243,243);
+        assertEquals(scorebox1_background, bc.scorebox1.getBackground());     //test scoreboard1 background color
+
+    }
+
+    @Test
+    void teamName2_test() {
+        bc.start(t,sb,t1,t2);
+        assertEquals(750, bc.teamName2.getX());     //test scoreboard2 position
+        assertEquals(550, bc.teamName2.getY());     //test scoreboard2 position
+        assertEquals(675, bc.teamName2.getWidth());     //test scoreboard2 width
+        assertEquals(50, bc.teamName2.getHeight());      //test scoreboard2 height
         Color scorebox2_background = new Color(243,243,243);
         assertEquals(scorebox2_background, bc.scorebox1.getBackground());     //test scoreboard2 background color
 
