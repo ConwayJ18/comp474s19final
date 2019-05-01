@@ -25,6 +25,7 @@ public class TeamImpl implements Team
 		this.name = name;
 		this.playersByName = new HashMap<String, Player>();
 		this.playersByNumber = new HashMap<Integer, Player>();
+		graphicsObservers = new ArrayList<Graphics>();
 	}
 	
 	@Override
@@ -46,6 +47,15 @@ public class TeamImpl implements Team
 		this.playersByName.put(p.getName(), p);
 		this.playersByNumber.put(p.getNumber(), p);
 		notifyObservers();
+	}
+	
+	public void addPlayers(ArrayList<Player> players)
+	{
+		for(Player p : players)
+		{
+			this.playersByName.put(p.getName(), p);
+			this.playersByNumber.put(p.getNumber(), p);
+		}
 	}
 
 	@Override

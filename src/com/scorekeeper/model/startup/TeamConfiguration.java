@@ -18,10 +18,13 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.scorekeeper.model.graphics.AdvancedControls;
 import com.scorekeeper.model.graphics.BasicControls;
 import com.scorekeeper.model.graphics.Graphics;
 import com.scorekeeper.model.graphics.OutwardDisplay;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
+import com.scorekeeper.model.team.Player;
+import com.scorekeeper.model.team.PlayerImpl;
 import com.scorekeeper.model.team.Team;
 import com.scorekeeper.model.team.TeamImpl;
 import com.scorekeeper.model.timer.TimerImpl;
@@ -183,7 +186,49 @@ public class TeamConfiguration extends JPanel implements ActionListener
     		s.addObserver(controlDisplay);
     		s.addObserver(outwardDisplay);
     		TeamImpl t1 = new TeamImpl(teamName1.getText());
+    		t1.addObserver(controlDisplay);
+    		t1.addObserver(outwardDisplay);
     		TeamImpl t2 = new TeamImpl(teamName2.getText());
+    		t2.addObserver(controlDisplay);
+    		t2.addObserver(outwardDisplay);
+    		controlDisplay.start(t, s, t1, t2);
+    		outwardDisplay.start(t, s, t1, t2);
+    	}
+    	else
+    	{
+    		ArrayList<Player> team1players = new ArrayList<Player>();
+    		team1players.add(new PlayerImpl(team1playerName1.getText(), Integer.valueOf(team1playerNumber1.getText())));
+    		team1players.add(new PlayerImpl(team1playerName2.getText(), Integer.valueOf(team1playerNumber2.getText())));
+    		team1players.add(new PlayerImpl(team1playerName3.getText(), Integer.valueOf(team1playerNumber3.getText())));
+    		team1players.add(new PlayerImpl(team1playerName4.getText(), Integer.valueOf(team1playerNumber4.getText())));
+    		team1players.add(new PlayerImpl(team1playerName5.getText(), Integer.valueOf(team1playerNumber5.getText())));
+    		team1players.add(new PlayerImpl(team1playerName6.getText(), Integer.valueOf(team1playerNumber6.getText())));
+    		team1players.add(new PlayerImpl(team1playerName7.getText(), Integer.valueOf(team1playerNumber7.getText())));
+    		ArrayList<Player> team2players = new ArrayList<Player>();
+    		team2players.add(new PlayerImpl(team2playerName1.getText(), Integer.valueOf(team2playerNumber1.getText())));
+    		team2players.add(new PlayerImpl(team2playerName2.getText(), Integer.valueOf(team2playerNumber2.getText())));
+    		team2players.add(new PlayerImpl(team2playerName3.getText(), Integer.valueOf(team2playerNumber3.getText())));
+    		team2players.add(new PlayerImpl(team2playerName4.getText(), Integer.valueOf(team2playerNumber4.getText())));
+    		team2players.add(new PlayerImpl(team2playerName5.getText(), Integer.valueOf(team2playerNumber5.getText())));
+    		team2players.add(new PlayerImpl(team2playerName6.getText(), Integer.valueOf(team2playerNumber6.getText())));
+    		team2players.add(new PlayerImpl(team2playerName7.getText(), Integer.valueOf(team2playerNumber7.getText())));
+    		
+    		Graphics controlDisplay = new AdvancedControls();
+    		Graphics outwardDisplay = new OutwardDisplay();
+    		TimerImpl t = new TimerImpl();
+    		t.addObserver(controlDisplay);
+    		t.addObserver(outwardDisplay);
+    		ScoreboardImpl s = new ScoreboardImpl();
+    		s.addObserver(controlDisplay);
+    		s.addObserver(outwardDisplay);
+    		TeamImpl t1 = new TeamImpl(teamName1.getText());
+    		t1.addObserver(controlDisplay);
+    		t1.addObserver(outwardDisplay);
+    		t1.addPlayers(team1players);
+    		TeamImpl t2 = new TeamImpl(teamName2.getText());
+    		t2.addObserver(controlDisplay);
+    		t2.addObserver(outwardDisplay);
+    		t2.addPlayers(team2players);
     		controlDisplay.start(t, s, t1, t2);
     		outwardDisplay.start(t, s, t1, t2);
     	}
@@ -193,7 +238,6 @@ public class TeamConfiguration extends JPanel implements ActionListener
 	{
 		if(simpleInterface)
 		{
-			System.out.println("Success");
 			launchBasicSetup();
 		}
 		else
@@ -204,7 +248,6 @@ public class TeamConfiguration extends JPanel implements ActionListener
 	
 	private static void launchBasicSetup()
 	{
-		System.out.println("Success");
         //Create and set up the window.
         teamFrame = new JFrame("Team Setup");
         teamFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -225,7 +268,6 @@ public class TeamConfiguration extends JPanel implements ActionListener
 	
 	private static void launchAdvancedSetup()
 	{
-		System.out.println("Success");
         //Create and set up the window.
         teamFrame = new JFrame("Team Setup");
         teamFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

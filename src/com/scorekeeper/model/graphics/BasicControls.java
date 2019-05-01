@@ -18,6 +18,7 @@ public class BasicControls implements Graphics
 	public JFrame frame;
     public Scoreboard scoreboard;
 	public TimerImpl timer;
+	public TeamImpl team1, team2;
 	public QTextField timebox, scorebox1, scorebox2, inputTime, inputScore1, inputScore2, notifications; //Text Fields
 	public QTextField teamName1, teamName2;
 	public QButton startTime, stopReset;	//Timer controls
@@ -42,7 +43,8 @@ public class BasicControls implements Graphics
 		timer = t; //Creates a timer object for use
 		timer.setBackground(new Color(243,243,243)); //Light gray
 		timer.setBounds(425, 25, 600, 150);
-		
+		team1 = t1;
+		team2 = t2;
 		/*
 		 * Begin creation of buttons & windows
 		 */
@@ -51,9 +53,9 @@ public class BasicControls implements Graphics
 		
 		//Create scoreboxes
 		scorebox1=new QTextField("0", 2, 25, 200, 675, 350); //Set default value & position
-		teamName1=new QTextField(t1.getTeamName(), 5, 25, 550, 675, 50);
+		teamName1=new QTextField(team1.getTeamName(), 5, 25, 550, 675, 50);
 	    scorebox2=new QTextField("0", 2, 750, 200, 675, 350); //Set default value & position
-	    teamName2=new QTextField(t2.getTeamName(), 5, 750, 550, 675, 50);
+	    teamName2=new QTextField(team2.getTeamName(), 5, 750, 550, 675, 50);
 		
 	    //Create time controls
 	    startTime=new QButton("Start", 1, 25, 25, 150, 150); //This is the start button
@@ -296,5 +298,9 @@ public class BasicControls implements Graphics
 	}
 
 	@Override
-	public void updateTeams() {	}
+	public void updateTeams()
+	{
+		teamName1.setText(team1.getTeamName());
+		teamName2.setText(team2.getTeamName());
+	}
 }

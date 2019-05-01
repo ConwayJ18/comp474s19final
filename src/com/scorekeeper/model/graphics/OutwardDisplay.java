@@ -27,6 +27,8 @@ public class OutwardDisplay implements Graphics
 		timer = t;
 		timer.setBackground(new Color(243,243,243)); //Light gray
 		timer.setBounds(425, 25, 600, 150);
+		team1 = t1;
+		team2 = t2;
 		scoreboard = s; //Creates a scoreboard object for use
 		
 		/*

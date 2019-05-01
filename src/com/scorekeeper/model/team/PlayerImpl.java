@@ -32,7 +32,7 @@ public class PlayerImpl implements Player
 		this.plusMinus=0;
 	}
 
-	PlayerImpl(String name, int number)
+	public PlayerImpl(String name, int number)
 	{
 		this.name=name;
 		this.number = number;
