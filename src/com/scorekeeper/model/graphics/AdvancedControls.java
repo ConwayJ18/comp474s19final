@@ -257,12 +257,39 @@ public class AdvancedControls implements Graphics
 	        }  
 	    }); 
 	    
-	    //Control to swap team1Player1
+	    //Control to edit team1 name
 	    editTeamName1.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
 	    {  
 	        public void actionPerformed(ActionEvent e)
 	        {
 	        	team1.setTeamName(JOptionPane.showInputDialog(frame,"Enter New Team Name"));
+	        }  
+	    }); 
+	    
+	    //Control to edit team2 name
+	    editTeamName2.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.setTeamName(JOptionPane.showInputDialog(frame,"Enter New Team Name"));
+	        }  
+	    }); 
+	    
+	    //Control to card team1player1
+	    cardTeam1Player1.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player1.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player1 stats
+	    statsTeam1Player1.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player1.getText()).showStats();;
 	        }  
 	    }); 
 	    /*

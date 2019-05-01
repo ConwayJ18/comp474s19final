@@ -16,7 +16,14 @@ public interface Player
 	public void removeFromPlay();
 	public String getPlayTime();
 	public void incrementPlayTime();
+	public String getPenaltyTime();
+	public void incrementPenaltyTime();
 	public int getPlusMinus();
 	public void incrementPlusMinus();
 	public void decrementPlusMinus();
+	public void showStats();
+	public int getBlueCards();
+	public int getYellowCards();
+	public int getRedCards();
+	public void cardPlayer(String time);
 }
