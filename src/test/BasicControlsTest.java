@@ -12,7 +12,7 @@ import com.scorekeeper.model.graphics.BasicControls;
 
 import java.awt.*;
 
-class GraphicsTest {
+class BasicControlsTest {
 	TimerImpl t = new TimerImpl();
 	ScoreboardImpl sb = new ScoreboardImpl();
 	BasicControls bc = new BasicControls();
