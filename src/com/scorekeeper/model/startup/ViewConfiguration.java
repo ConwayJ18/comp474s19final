@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -62,11 +61,13 @@ public class ViewConfiguration extends JPanel implements ActionListener {
     {
     	if(simpleButton.isSelected())
     	{
-    		TeamConfiguration.start(true);
+    		BasicTeamConfiguration.start();
+    		viewFrame.dispose();
     	}
     	else
     	{
-    		TeamConfiguration.start(false);
+    		AdvancedTeamConfiguration.start();
+    		viewFrame.dispose();
     	}
     }
  

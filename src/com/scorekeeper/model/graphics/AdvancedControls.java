@@ -365,7 +365,6 @@ public class AdvancedControls implements Graphics
 	    //These things need to go last to prevent loading lag
 		frame.setLocationRelativeTo(null); //Centers window on screen
 		frame.setLayout(null); //Allows us to manually set item locations
-		//frame.setResizable(false); //Disallows resizing the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Makes program quit when the window closes
 		frame.setVisible(true); //Makes the window visible
 	}

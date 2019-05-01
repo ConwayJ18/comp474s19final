@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -29,7 +30,7 @@ import com.scorekeeper.model.team.Team;
 import com.scorekeeper.model.team.TeamImpl;
 import com.scorekeeper.model.timer.TimerImpl;
 
-public class TeamConfiguration extends JPanel implements ActionListener
+public class BasicTeamConfiguration extends JPanel implements ActionListener
 {
 	static JFrame teamFrame;
 	static boolean buttonActionFlag = true;
@@ -40,7 +41,7 @@ public class TeamConfiguration extends JPanel implements ActionListener
 	JButton save;
 	JLabel instructions, team1NameLabel, team1NumberLabel, team2NameLabel, team2NumberLabel;
 	
-	TeamConfiguration()
+	BasicTeamConfiguration()
 	{
 		super(new BorderLayout());
 		
@@ -65,112 +66,6 @@ public class TeamConfiguration extends JPanel implements ActionListener
         add(save);
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
     }
- 
-	TeamConfiguration(int flag)
-	{
-		super(new BorderLayout());
-		buttonActionFlag = false;
-		 
-        //Create the radio buttons.
-		teamName1 = new JTextField("Team 1");
-        team1playerName1 = new JTextField();
-        team1playerName2 = new JTextField();
-        team1playerName3 = new JTextField();
-        team1playerName4 = new JTextField();
-        team1playerName5 = new JTextField();
-        team1playerName6 = new JTextField();
-        team1playerName7 = new JTextField();
-        
-        team1playerNumber1 = new JTextField();
-        team1playerNumber2 = new JTextField();
-        team1playerNumber3 = new JTextField();
-        team1playerNumber4 = new JTextField();
-        team1playerNumber5 = new JTextField();
-        team1playerNumber6 = new JTextField();
-        team1playerNumber7 = new JTextField();
-        
-        teamName2 = new JTextField("Team 2");
-        team2playerName1 = new JTextField();
-        team2playerName2 = new JTextField();
-        team2playerName3 = new JTextField();
-        team2playerName4 = new JTextField();
-        team2playerName5 = new JTextField();
-        team2playerName6 = new JTextField();
-        team2playerName7 = new JTextField();
-        
-        team2playerNumber1 = new JTextField();
-        team2playerNumber2 = new JTextField();
-        team2playerNumber3 = new JTextField();
-        team2playerNumber4 = new JTextField();
-        team2playerNumber5 = new JTextField();
-        team2playerNumber6 = new JTextField();
-        team2playerNumber7 = new JTextField();
-
-        //Set up the instructions.
-        instructions = new JLabel("Please enter team information:");
-        
-        //Set up the labels
-        team1NameLabel = new JLabel("Player Last Name");
-        team1NumberLabel = new JLabel("Player Number");
-        team2NameLabel = new JLabel("Player Last Name");
-        team2NumberLabel = new JLabel("Player Number");
-        
-        
-        //Set up team names
-        JPanel teamPanel = new JPanel(new GridLayout(1,2));
-        teamPanel.add(teamName1);
-        teamPanel.add(teamName2);
- 
-        //Setup players
-        JPanel playerPanel = new JPanel(new GridLayout(8,4));
-        playerPanel.add(team1NameLabel);
-        playerPanel.add(team1NumberLabel);
-        playerPanel.add(team2NameLabel);
-        playerPanel.add(team2NumberLabel);
-        playerPanel.add(team1playerName1);
-        playerPanel.add(team1playerNumber1);
-        playerPanel.add(team2playerName1);
-        playerPanel.add(team2playerNumber1);
-        playerPanel.add(team1playerName2);
-        playerPanel.add(team1playerNumber2);
-        playerPanel.add(team2playerName2);
-        playerPanel.add(team2playerNumber2);
-        playerPanel.add(team1playerName2);
-        playerPanel.add(team1playerNumber2);
-        playerPanel.add(team2playerName2);
-        playerPanel.add(team2playerNumber2);
-        playerPanel.add(team1playerName3);
-        playerPanel.add(team1playerNumber3);
-        playerPanel.add(team2playerName3);
-        playerPanel.add(team2playerNumber3);
-        playerPanel.add(team1playerName4);
-        playerPanel.add(team1playerNumber4);
-        playerPanel.add(team2playerName4);
-        playerPanel.add(team2playerNumber4);
-        playerPanel.add(team1playerName5);
-        playerPanel.add(team1playerNumber5);
-        playerPanel.add(team2playerName5);
-        playerPanel.add(team2playerNumber5);
-        playerPanel.add(team1playerName6);
-        playerPanel.add(team1playerNumber6);
-        playerPanel.add(team2playerName6);
-        playerPanel.add(team2playerNumber6);
-        playerPanel.add(team1playerName7);
-        playerPanel.add(team1playerNumber7);
-        playerPanel.add(team2playerName7);
-        playerPanel.add(team2playerNumber7);
-        
-        //Set up the button
-        save = new JButton("Save");
-        save.addActionListener(this);
- 
-        this.setLayout(new GridLayout(5,1));
-        add(instructions);
-        add(teamPanel);
-        add(playerPanel);
-        add(save);
-        setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-	}
 	
     /** Listens to the radio buttons. */
     public void actionPerformed(ActionEvent e)
@@ -193,6 +88,7 @@ public class TeamConfiguration extends JPanel implements ActionListener
     		t2.addObserver(outwardDisplay);
     		controlDisplay.start(t, s, t1, t2);
     		outwardDisplay.start(t, s, t1, t2);
+			teamFrame.dispose();
     	}
     	else
     	{
@@ -231,29 +127,18 @@ public class TeamConfiguration extends JPanel implements ActionListener
     		t2.addPlayers(team2players);
     		controlDisplay.start(t, s, t1, t2);
     		outwardDisplay.start(t, s, t1, t2);
+			teamFrame.dispose();
     	}
     }
 	
-	public static void start(boolean simpleInterface)
+	public static void start()
 	{
-		if(simpleInterface)
-		{
-			launchBasicSetup();
-		}
-		else
-		{
-			launchAdvancedSetup();
-		}
-	}
-	
-	private static void launchBasicSetup()
-	{
-        //Create and set up the window.
+		//Create and set up the window.
         teamFrame = new JFrame("Team Setup");
         teamFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Create and set up the content pane.
-        JComponent newContentPane = new TeamConfiguration();
+        JComponent newContentPane = new BasicTeamConfiguration();
         newContentPane.setOpaque(true); //content panes must be opaque
         teamFrame.setContentPane(newContentPane);
         teamFrame.setLocationRelativeTo(null);
@@ -261,28 +146,5 @@ public class TeamConfiguration extends JPanel implements ActionListener
         //Display the window.
         teamFrame.pack();
         teamFrame.setVisible(true);
-        
-        teamFrame = new JFrame("Configuration Select");
-        teamFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	
-	private static void launchAdvancedSetup()
-	{
-        //Create and set up the window.
-        teamFrame = new JFrame("Team Setup");
-        teamFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-        //Create and set up the content pane.
-        JComponent newContentPane = new TeamConfiguration(1);
-        newContentPane.setOpaque(true); //content panes must be opaque
-        teamFrame.setContentPane(newContentPane);
-        teamFrame.setLocationRelativeTo(null);
- 
-        //Display the window.
-        teamFrame.pack();
-        teamFrame.setVisible(true);
-        
-        teamFrame = new JFrame("Configuration Select");
-        teamFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

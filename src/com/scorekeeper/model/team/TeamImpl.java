@@ -8,23 +8,27 @@ import com.scorekeeper.model.graphics.Graphics;
 public class TeamImpl implements Team
 {
 	String name;
-	HashMap<String, Player> playersByName;
-	HashMap<Integer, Player> playersByNumber;
+	ArrayList<Player> players;
 	ArrayList<Graphics> graphicsObservers;
 	
 	public TeamImpl()
 	{
 		this.name = "Team";
-		this.playersByName = new HashMap<String, Player>();
-		this.playersByNumber = new HashMap<Integer, Player>();
+		this.players = new ArrayList<Player>();
 		graphicsObservers = new ArrayList<Graphics>();
 	}
 	
 	public TeamImpl(String name)
 	{
 		this.name = name;
-		this.playersByName = new HashMap<String, Player>();
-		this.playersByNumber = new HashMap<Integer, Player>();
+		this.players = new ArrayList<Player>();
+		graphicsObservers = new ArrayList<Graphics>();
+	}
+	
+	public TeamImpl(String name, ArrayList<Player> players)
+	{
+		this.name = name;
+		this.players = players;
 		graphicsObservers = new ArrayList<Graphics>();
 	}
 	
@@ -44,8 +48,7 @@ public class TeamImpl implements Team
 	@Override
 	public void addPlayer(Player p)
 	{
-		this.playersByName.put(p.getName(), p);
-		this.playersByNumber.put(p.getNumber(), p);
+		this.players.add(p);
 		notifyObservers();
 	}
 	
@@ -53,41 +56,47 @@ public class TeamImpl implements Team
 	{
 		for(Player p : players)
 		{
-			this.playersByName.put(p.getName(), p);
-			this.playersByNumber.put(p.getNumber(), p);
+			this.players.add(p);
 		}
 	}
 
 	@Override
 	public void removePlayer(Player p)
 	{
-		this.playersByName.put(p.getName(), p);
-		this.playersByNumber.put(p.getNumber(), p);
+		this.players.add(p);
 		notifyObservers();
 	}
 
 	@Override
 	public ArrayList<Player> getPlayers()
 	{
-		ArrayList<Player> players = new ArrayList<Player>();
-		for(Player p : playersByName.values())
-		{
-			players.add(p);
-		}
-		
-		return players;
+		return this.players;
 	}
 	
 	@Override
 	public Player getPlayerByLastName(String name)
 	{
-		return this.playersByName.get(name);
+		for(Player p : this.players)
+		{
+			if(p.getName().equals(name))
+			{
+				return p;
+			}
+		}
+		return null;
 	}
 
 	@Override
 	public Player getPlayerByNumber(int number)
 	{
-		return this.playersByNumber.get(number);
+		for(Player p : this.players)
+		{
+			if(p.getNumber() == number)
+			{
+				return p;
+			}
+		}
+		return null;
 	}
 	
 	@Override
