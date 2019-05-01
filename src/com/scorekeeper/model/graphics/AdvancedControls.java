@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import com.scorekeeper.model.scoreboard.Scoreboard;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
 import com.scorekeeper.model.timer.TimerImpl;
-
+import com.scorekeeper.model.team.Player;
 import com.scorekeeper.model.team.TeamImpl;
 
 public class AdvancedControls implements Graphics
@@ -292,6 +292,240 @@ public class AdvancedControls implements Graphics
 	        	team1.getPlayerByLastName(team1player1.getText()).showStats();;
 	        }  
 	    }); 
+	    
+	    //Control to card team1player2
+	    cardTeam1Player2.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player2.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player2 stats
+	    statsTeam1Player2.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player2.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team1player3
+	    cardTeam1Player3.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player3.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player3 stats
+	    statsTeam1Player3.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player3.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team1player4
+	    cardTeam1Player4.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player4.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player4 stats
+	    statsTeam1Player4.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player4.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team1player5
+	    cardTeam1Player5.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player5.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player5 stats
+	    statsTeam1Player5.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player5.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team1player6
+	    cardTeam1Player6.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player6.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player6 stats
+	    statsTeam1Player6.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player6.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team1player7
+	    cardTeam1Player7.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player7.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team1player7 stats
+	    statsTeam1Player7.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team1.getPlayerByLastName(team1player7.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	  //Control to card team2player1
+	    cardTeam2Player1.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player1.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player1 stats
+	    statsTeam2Player1.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player1.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team2player2
+	    cardTeam2Player2.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player2.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player2 stats
+	    statsTeam2Player2.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player2.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team2player3
+	    cardTeam2Player3.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player3.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player3 stats
+	    statsTeam2Player3.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player3.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team2player4
+	    cardTeam2Player4.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player4.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player4 stats
+	    statsTeam2Player4.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player4.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team2player5
+	    cardTeam2Player5.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player5.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player5 stats
+	    statsTeam2Player5.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player5.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team2player6
+	    cardTeam2Player6.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player6.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player6 stats
+	    statsTeam2Player6.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player6.getText()).showStats();;
+	        }  
+	    }); 
+	    
+	    //Control to card team2player7
+	    cardTeam2Player7.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player7.getText()).cardPlayer(timer.getTime());
+	        }  
+	    }); 
+	    
+	    //Control to show team2player7 stats
+	    statsTeam2Player7.addActionListener(new ActionListener() //Dictates what happens when acknowledge button is clicked
+	    {  
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	team2.getPlayerByLastName(team2player7.getText()).showStats();;
+	        }  
+	    }); 
 	    /*
 		 * End assignment of button functions
 		 */
@@ -513,6 +747,47 @@ public class AdvancedControls implements Graphics
 	{
 		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
 		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
+	}
+	
+	@Override
+	public void updateScore(boolean team1scored)
+	{
+		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
+		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
+		if(team1scored)
+		{
+			for(Player p : team1.getPlayers())
+			{
+				if(p.inPlay())
+				{
+					p.incrementPlusMinus();
+				}
+			}
+			for(Player p : team2.getPlayers())
+			{
+				if(p.inPlay())
+				{
+					p.decrementPlusMinus();
+				}
+			}
+		}
+		else
+		{
+			for(Player p : team2.getPlayers())
+			{
+				if(p.inPlay())
+				{
+					p.incrementPlusMinus();
+				}
+			}
+			for(Player p : team1.getPlayers())
+			{
+				if(p.inPlay())
+				{
+					p.decrementPlusMinus();
+				}
+			}
+		}
 	}
 	
 	@Override

@@ -98,9 +98,16 @@ public class OutwardDisplay implements Graphics
 	
 	@Override
 	public void updateNotification(String string) {}
-
+	
 	@Override
 	public void updateScore()
+	{
+		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
+		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
+	}
+
+	@Override
+	public void updateScore(boolean team1scored)
 	{
 		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
 		scorebox2.setText(String.valueOf(scoreboard.getScore2()));

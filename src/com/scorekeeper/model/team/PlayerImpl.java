@@ -70,6 +70,20 @@ public class PlayerImpl implements Player
 		this.redCards=0;
 	}
 	
+	public PlayerImpl(String name, int number, boolean inPlay)
+	{
+		this.name=name;
+		this.number = number;
+		this.cards = new ArrayList<Card>();
+		this.inPenaltyBox = false;
+		this.inPlay = inPlay;
+		this.playTimeInSeconds=0;
+		this.plusMinus=0;
+		this.blueCards=0;
+		this.yellowCards=0;
+		this.redCards=0;
+	}
+	
 	@Override
 	public String getName()
 	{

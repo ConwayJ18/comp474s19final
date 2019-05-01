@@ -296,6 +296,13 @@ public class BasicControls implements Graphics
 		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
 		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
 	}
+	
+	@Override
+	public void updateScore(boolean team1scored)
+	{
+		scorebox1.setText(String.valueOf(scoreboard.getScore1()));
+		scorebox2.setText(String.valueOf(scoreboard.getScore2()));
+	}
 
 	@Override
 	public void updateTeams()

@@ -12,5 +12,6 @@ public interface Graphics
 	void updateTimer(String string);
 	void updateNotification(String string);
 	void updateScore();
+	void updateScore(boolean team1scored);
 	void updateTeams();
 }

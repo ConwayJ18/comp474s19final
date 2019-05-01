@@ -334,12 +334,12 @@ public class AdvancedTeamConfiguration
     private void submit()
     {
     	ArrayList<Player> team1players = new ArrayList<Player>();
-		team1players.add(new PlayerImpl(team1playerName1.getText(), Integer.valueOf(team1playerNumber1.getText())));
-		team1players.add(new PlayerImpl(team1playerName2.getText(), Integer.valueOf(team1playerNumber2.getText())));
-		team1players.add(new PlayerImpl(team1playerName3.getText(), Integer.valueOf(team1playerNumber3.getText())));
-		team1players.add(new PlayerImpl(team1playerName4.getText(), Integer.valueOf(team1playerNumber4.getText())));
-		team1players.add(new PlayerImpl(team1playerName5.getText(), Integer.valueOf(team1playerNumber5.getText())));
-		team1players.add(new PlayerImpl(team1playerName6.getText(), Integer.valueOf(team1playerNumber6.getText())));
+		team1players.add(new PlayerImpl(team1playerName1.getText(), Integer.valueOf(team1playerNumber1.getText()), true));
+		team1players.add(new PlayerImpl(team1playerName2.getText(), Integer.valueOf(team1playerNumber2.getText()), true));
+		team1players.add(new PlayerImpl(team1playerName3.getText(), Integer.valueOf(team1playerNumber3.getText()), true));
+		team1players.add(new PlayerImpl(team1playerName4.getText(), Integer.valueOf(team1playerNumber4.getText()), true));
+		team1players.add(new PlayerImpl(team1playerName5.getText(), Integer.valueOf(team1playerNumber5.getText()), true));
+		team1players.add(new PlayerImpl(team1playerName6.getText(), Integer.valueOf(team1playerNumber6.getText()), true));
 		team1players.add(new PlayerImpl(team1playerName7.getText(), Integer.valueOf(team1playerNumber7.getText())));
 		team1players.add(new PlayerImpl(team1playerName8.getText(), Integer.valueOf(team1playerNumber8.getText())));
 		team1players.add(new PlayerImpl(team1playerName9.getText(), Integer.valueOf(team1playerNumber9.getText())));
@@ -356,12 +356,12 @@ public class AdvancedTeamConfiguration
 		team1players.add(new PlayerImpl(team1playerName20.getText(), Integer.valueOf(team1playerNumber20.getText())));
 		team1players.add(new PlayerImpl(team1playerName21.getText(), Integer.valueOf(team1playerNumber21.getText())));
 		ArrayList<Player> team2players = new ArrayList<Player>();
-		team2players.add(new PlayerImpl(team2playerName1.getText(), Integer.valueOf(team2playerNumber1.getText())));
-		team2players.add(new PlayerImpl(team2playerName2.getText(), Integer.valueOf(team2playerNumber2.getText())));
-		team2players.add(new PlayerImpl(team2playerName3.getText(), Integer.valueOf(team2playerNumber3.getText())));
-		team2players.add(new PlayerImpl(team2playerName4.getText(), Integer.valueOf(team2playerNumber4.getText())));
-		team2players.add(new PlayerImpl(team2playerName5.getText(), Integer.valueOf(team2playerNumber5.getText())));
-		team2players.add(new PlayerImpl(team2playerName6.getText(), Integer.valueOf(team2playerNumber6.getText())));
+		team2players.add(new PlayerImpl(team2playerName1.getText(), Integer.valueOf(team2playerNumber1.getText()), true));
+		team2players.add(new PlayerImpl(team2playerName2.getText(), Integer.valueOf(team2playerNumber2.getText()), true));
+		team2players.add(new PlayerImpl(team2playerName3.getText(), Integer.valueOf(team2playerNumber3.getText()), true));
+		team2players.add(new PlayerImpl(team2playerName4.getText(), Integer.valueOf(team2playerNumber4.getText()), true));
+		team2players.add(new PlayerImpl(team2playerName5.getText(), Integer.valueOf(team2playerNumber5.getText()), true));
+		team2players.add(new PlayerImpl(team2playerName6.getText(), Integer.valueOf(team2playerNumber6.getText()), true));
 		team2players.add(new PlayerImpl(team2playerName7.getText(), Integer.valueOf(team2playerNumber7.getText())));
 		team2players.add(new PlayerImpl(team2playerName8.getText(), Integer.valueOf(team2playerNumber8.getText())));
 		team2players.add(new PlayerImpl(team2playerName9.getText(), Integer.valueOf(team2playerNumber9.getText())));

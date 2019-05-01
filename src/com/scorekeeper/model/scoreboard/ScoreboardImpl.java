@@ -92,7 +92,7 @@ public class ScoreboardImpl implements Scoreboard
         if (this.score1 < 990) { //If score can be incremented
             this.score1 += 10; //Increment score
         }
-        notifyObservers();
+        notifyObservers(true);
 	}
 	
 	@Override
@@ -101,7 +101,7 @@ public class ScoreboardImpl implements Scoreboard
         if (this.score2 < 990) { //If score can be incremented
             this.score2 += 10; //Increment score
         }
-        notifyObservers();
+        notifyObservers(false);
 	}
 	
 	@Override
@@ -110,7 +110,7 @@ public class ScoreboardImpl implements Scoreboard
 		if (this.score1 > 0) { //If score can be decremented
 			this.score1 -= 10; //Decrement score
 		}
-		notifyObservers();
+		notifyObservers(false);
 	}
 	
 	@Override
@@ -119,7 +119,7 @@ public class ScoreboardImpl implements Scoreboard
 		if (this.score2 > 0) { //If score can be decremented
 			this.score2 -= 10; //Decrement score
 		}
-		notifyObservers();
+		notifyObservers(true);
 	}
 
 	@Override
@@ -182,6 +182,14 @@ public class ScoreboardImpl implements Scoreboard
 		for(Graphics g : GraphicsObservers)
 		{
 			g.updateScore();
+		}
+	}
+	
+	private void notifyObservers(boolean team1Scored)
+	{
+		for(Graphics g : GraphicsObservers)
+		{
+			g.updateScore(team1Scored);
 		}
 	}
 }
