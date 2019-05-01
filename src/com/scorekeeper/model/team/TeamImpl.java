@@ -1,7 +1,6 @@
 package com.scorekeeper.model.team;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.scorekeeper.model.graphics.Graphics;
 

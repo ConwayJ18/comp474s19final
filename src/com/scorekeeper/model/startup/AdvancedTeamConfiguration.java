@@ -5,11 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -148,7 +146,7 @@ public class AdvancedTeamConfiguration
         team2playerNumber21 = new JTextField("0");
 
         //Add the instructions.
-        instructions = new JLabel("Please enter team information:", JLabel.CENTER);
+        instructions = new JLabel("Please enter team information (List starters first):", JLabel.CENTER);
         c.fill = GridBagConstraints.HORIZONTAL;
 	    c.ipady = 0;       //reset to default
 	    c.anchor = GridBagConstraints.PAGE_END; //bottom of space

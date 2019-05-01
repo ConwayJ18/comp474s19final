@@ -4,19 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.scorekeeper.model.graphics.AdvancedControls;
@@ -26,7 +21,6 @@ import com.scorekeeper.model.graphics.OutwardDisplay;
 import com.scorekeeper.model.scoreboard.ScoreboardImpl;
 import com.scorekeeper.model.team.Player;
 import com.scorekeeper.model.team.PlayerImpl;
-import com.scorekeeper.model.team.Team;
 import com.scorekeeper.model.team.TeamImpl;
 import com.scorekeeper.model.timer.TimerImpl;
 
