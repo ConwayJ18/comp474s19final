@@ -197,8 +197,8 @@ public class PlayerImpl implements Player
 		String ret = "";
 		
 		ret = (this.playTimeInSeconds % 60) + ret;
-		ret = (Math.floor(this.playTimeInSeconds/60)) + ":" + ret;
-		ret = (Math.floor(this.playTimeInSeconds/3600)) + ":" + ret;
+		ret = ((int)Math.floor(this.playTimeInSeconds/60)) + ":" + ret;
+		ret = ((int)Math.floor(this.playTimeInSeconds/3600)) + ":" + ret;
 		
 		return ret;
 	}
@@ -219,8 +219,8 @@ public class PlayerImpl implements Player
 		String ret = "";
 		
 		ret = (this.penaltyTimeInSeconds % 60) + ret;
-		ret = (Math.floor(this.penaltyTimeInSeconds/60)) + ":" + ret;
-		ret = (Math.floor(this.penaltyTimeInSeconds/3600)) + ":" + ret;
+		ret = ((int)Math.floor(this.penaltyTimeInSeconds/60)) + ":" + ret;
+		ret = ((int)Math.floor(this.penaltyTimeInSeconds/3600)) + ":" + ret;
 		
 		return ret;
 	}
