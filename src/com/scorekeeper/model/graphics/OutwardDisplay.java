@@ -36,10 +36,10 @@ public class OutwardDisplay implements Graphics
 		timebox = new QTextField("00:00:00", 1, 425, 25, 600, 150);
 		
 		//Create scoreboxes
-		scorebox1=new QTextField("0", 2, 25, 200, 675, 450); //Set default value & position
-	    scorebox2=new QTextField("0", 2, 750, 200, 675, 450); //Set default value & position
-	    teamName1=new QTextField("Team 1", 4, 25, 660, 675, 100);
-	    teamName2=new QTextField("Team 2", 4, 750, 660, 675, 100);
+		scorebox1=new QTextField("0", 2, 750, 200, 675, 450); //Set default value & position
+	    scorebox2=new QTextField("0", 2, 25, 200, 675, 450); //Set default value & position
+	    teamName1=new QTextField(t1.getTeamName(), 4, 750, 660, 675, 100);
+	    teamName2=new QTextField(t2.getTeamName(), 4, 25, 660, 675, 100);
 	    /*
 		 * End creation of buttons & windows
 		 */
@@ -81,10 +81,10 @@ public class OutwardDisplay implements Graphics
 		int frameWidth = frame.getWidth();
 		int frameHeight = frame.getHeight();
 		
-		scorebox1.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 450*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));	    
-	    scorebox2.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 450*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
-	    teamName1.setBounds(25*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));	    
-	    teamName2.setBounds(750*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));
+		scorebox1.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 450*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));	    
+	    scorebox2.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 450*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
+	    teamName1.setBounds(750*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));	    
+	    teamName2.setBounds(25*frameWidth/1450, 660*frameHeight/800, 675*frameWidth/1450, 100*frameHeight/800, Math.min(256*frameWidth/1450,72*frameHeight/800));
 		timebox.setBounds(425*frameWidth/1450, 25*frameHeight/800, 600*frameWidth/1450, 150*frameHeight/800, Math.min(126*frameWidth/1450,126*frameHeight/800));
 	}
 	

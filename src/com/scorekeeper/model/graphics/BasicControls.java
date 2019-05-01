@@ -19,6 +19,7 @@ public class BasicControls implements Graphics
     public Scoreboard scoreboard;
 	public TimerImpl timer;
 	public QTextField timebox, scorebox1, scorebox2, inputTime, inputScore1, inputScore2, notifications; //Text Fields
+	public QTextField teamName1, teamName2;
 	public QButton startTime, stopReset;	//Timer controls
     public QButton incrementScore1, incrementScore2, decrementScore1, decrementScore2; //Score controls
     public QButton setTime, setScore1, setScore2; //Setter buttons
@@ -26,13 +27,13 @@ public class BasicControls implements Graphics
 	
     public void start(TimerImpl t, ScoreboardImpl s, TeamImpl t1, TeamImpl t2)
 	{
-		initializeParts(t, s);
+		initializeParts(t, s, t1, t2);
 		initializeActions();
 		buildScreen();
 		enableResizing();
 	}
     
-	public void initializeParts(TimerImpl t, ScoreboardImpl s)
+	public void initializeParts(TimerImpl t, ScoreboardImpl s, TeamImpl t1, TeamImpl t2)
 	{
 		frame = new JFrame("Quidditch Scorekeeper"); //Create window with title "Quidditch Scorekeeper"
 		frame.setSize(1450, 800); //Set window size
@@ -49,8 +50,10 @@ public class BasicControls implements Graphics
 		timebox = new QTextField("00:00:00", 1, 425, 25, 600, 150);
 		
 		//Create scoreboxes
-		scorebox1=new QTextField("0", 2, 25, 200, 675, 400); //Set default value & position
-	    scorebox2=new QTextField("0", 2, 750, 200, 675, 400); //Set default value & position
+		scorebox1=new QTextField("0", 2, 25, 200, 675, 350); //Set default value & position
+		teamName1=new QTextField(t1.getTeamName(), 5, 25, 550, 675, 50);
+	    scorebox2=new QTextField("0", 2, 750, 200, 675, 350); //Set default value & position
+	    teamName2=new QTextField(t2.getTeamName(), 5, 750, 550, 675, 50);
 		
 	    //Create time controls
 	    startTime=new QButton("Start", 1, 25, 25, 150, 150); //This is the start button
@@ -190,6 +193,8 @@ public class BasicControls implements Graphics
 		
 	    frame.add(scorebox1); //Add scoreboxes to window
 	    frame.add(scorebox2);
+	    frame.add(teamName1);
+	    frame.add(teamName2);
 	    
 	    frame.add(startTime); //Add score controls to window
 	    frame.add(stopReset); 
@@ -212,7 +217,6 @@ public class BasicControls implements Graphics
 	    //These things need to go last to prevent loading lag
 		frame.setLocationRelativeTo(null); //Centers window on screen
 		frame.setLayout(null); //Allows us to manually set item locations
-		//frame.setResizable(false); //Disallows resizing the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Makes program quit when the window closes
 		frame.setVisible(true); //Makes the window visible
 	}
@@ -236,18 +240,20 @@ public class BasicControls implements Graphics
 		int frameWidth = frame.getWidth();
 		int frameHeight = frame.getHeight();
 		
-		scorebox1.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 400*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
+		scorebox1.setBounds(25*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 350*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
 		incrementScore1.setBounds(25*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
 	    decrementScore1.setBounds(130*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
 	    inputScore1.setBounds(240*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800, Math.min(72*frameWidth/1450,72*frameHeight/800));
 	    setScore1.setBounds(490*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800);
+	    teamName1.setBounds(25*frameWidth/1450, 550*frameHeight/800, 675*frameWidth/1450, 50*frameHeight/800, Math.min(24*frameWidth/1450,24*frameHeight/800));
 	    
-	    scorebox2.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 400*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
+	    scorebox2.setBounds(750*frameWidth/1450, 200*frameHeight/800, 675*frameWidth/1450, 350*frameHeight/800, Math.min(256*frameWidth/1450,256*frameHeight/800));
 	    incrementScore2.setBounds(750*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
 	    decrementScore2.setBounds(860*frameWidth/1450, 610*frameHeight/800, 100*frameWidth/1450, 100*frameHeight/800);
 	    inputScore2.setBounds(970*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800, Math.min(72*frameWidth/1450,72*frameHeight/800));
 	    setScore2.setBounds(1210*frameWidth/1450, 610*frameHeight/800, 210*frameWidth/1450, 100*frameHeight/800);
-		
+	    teamName2.setBounds(750*frameWidth/1450, 550*frameHeight/800, 675*frameWidth/1450, 50*frameHeight/800, Math.min(24*frameWidth/1450,24*frameHeight/800));
+	    
 		timebox.setBounds(425*frameWidth/1450, 25*frameHeight/800, 600*frameWidth/1450, 150*frameHeight/800, Math.min(126*frameWidth/1450,126*frameHeight/800));
 		startTime.setBounds(25*frameWidth/1450, 25*frameHeight/800, 150*frameWidth/1450, 150*frameHeight/800);
 	    stopReset.setBounds(185*frameWidth/1450, 25*frameHeight/800, 150*frameWidth/1450, 150*frameHeight/800);
